@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,16 +10,123 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="275dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="69dp"
-            android:layout_marginTop="56dp"
-            android:font="@font/roboto"
-            android:text="recherche" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginEnd="22dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:hint="Recherche" />
+
+        <ImageView
+            android:id="@+id/logo_search"
+            android:layout_width="wrap_content"
+            android:layout_height="49dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="319dp"
+            android:src="@drawable/ic_search" />
+
+        <Button
+            android:id="@+id/categorie1"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="457dp"
+            android:gravity="left|center_vertical"
+            android:text="Button                                                                  >" />
+
+        <Button
+            android:id="@+id/categorie2"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="396dp"
+            android:gravity="left|center_vertical"
+            android:text="Button                                                                  >" />
+
+        <Button
+            android:id="@+id/categorie3"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="328dp"
+            android:gravity="left|center_vertical"
+            android:text="Armoire                                                                 >" />
+
+        <Button
+            android:id="@+id/categorie4"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="261dp"
+            android:gravity="left|center_vertical"
+            android:text="Canapé                                                                   >" />
+
+        <Button
+            android:id="@+id/categorie5"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="197dp"
+            android:gravity="left|center_vertical"
+            android:text="Table                                                                      >" />
+
+        <Button
+            android:id="@+id/categorie6"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="131dp"
+            android:gravity="left|center_vertical"
+            android:text="Bureau                                                                   >" />
+
+        <Button
+            android:id="@+id/categorie7"
+            android:layout_width="334dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="67dp"
+            android:gravity="left|center_vertical"
+            android:text="Commode                                                              >" />
+
+        <Button
+            android:id="@+id/categorie8"
+            android:layout_width="334dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="left|center_vertical"
+            android:text="Chaise                                                                    >" />
 
     </RelativeLayout>
+
 
 </FrameLayout>
