@@ -4,11 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.squid1.fragments.UserFragment">
+    tools:context="com.example.squid1.fragments.InscriptionFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/editTextTextPassword"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="99dp"
+            android:layout_marginEnd="103dp"
+            android:layout_marginBottom="139dp"
+            android:ems="10"
+            android:hint="Pseudo"
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/connexion"
@@ -17,9 +32,9 @@
             android:layout_alignBottom="@+id/editTextTextPassword"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="115dp"
-            android:layout_marginEnd="115dp"
-            android:layout_marginBottom="-113dp"
+            android:layout_marginStart="113dp"
+            android:layout_marginEnd="117dp"
+            android:layout_marginBottom="-163dp"
             android:background="@color/teal_700"
             android:text="Connexion"
             android:textColor="#000000" />
@@ -31,9 +46,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="101dp"
-            android:layout_marginEnd="101dp"
-            android:layout_marginBottom="255dp"
+            android:layout_marginStart="98dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="209dp"
             android:ems="10"
             android:hint="Mot De Passe"
             android:inputType="textPassword"
@@ -41,27 +56,16 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="191dp"
-            android:layout_height="176dp"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="101dp"
+            android:layout_marginStart="118dp"
             android:layout_marginTop="22dp"
-            android:layout_marginEnd="101dp"
+            android:layout_marginEnd="130dp"
             android:layout_marginBottom="48dp"
             android:src="@drawable/fichier_12x_3" />
-
-        <TextView
-            android:id="@+id/mdpOublie"
-            android:layout_width="152dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/editTextTextPassword"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="52dp"
-            android:layout_marginBottom="-87dp"
-            android:clickable="true"
-            android:text="Mot de Passe Oublié ?" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
@@ -70,24 +74,24 @@
             android:layout_above="@+id/editTextTextPassword"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="101dp"
-            android:layout_marginEnd="101dp"
-            android:layout_marginBottom="33dp"
+            android:layout_marginStart="99dp"
+            android:layout_marginEnd="103dp"
+            android:layout_marginBottom="49dp"
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:minHeight="48dp" />
 
         <Button
-            android:id="@+id/inscription"
+            android:id="@+id/inscriptionDone"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/editTextTextPassword"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="115dp"
-            android:layout_marginEnd="115dp"
-            android:layout_marginBottom="-185dp"
+            android:layout_marginStart="114dp"
+            android:layout_marginEnd="116dp"
+            android:layout_marginBottom="-90dp"
             android:background="@color/teal_700"
             android:text="S'inscrire"
             android:textColor="#000000" />

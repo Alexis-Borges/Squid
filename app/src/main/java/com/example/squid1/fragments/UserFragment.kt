@@ -1,4 +1,4 @@
-package com.example.squid.fragments
+package com.example.squid1.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
