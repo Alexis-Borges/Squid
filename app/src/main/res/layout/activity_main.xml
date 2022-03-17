@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.squid.MainActivity" >
-
+    android:id="@+id/coordinator"
+    >
 
     <FrameLayout
+
         android:id="@+id/fl_wrapper"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,8 +17,20 @@
         android:layout_marginBottom="0dp"
         android:background="#272727">
 
-    </FrameLayout>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/products_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/imageView"
@@ -39,6 +52,33 @@
         android:background="#272727"
         app:itemIconTint="#fff"
         app:itemTextColor="#fff"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/nav_menu">
+
+        <RelativeLayout
+            android:id="@+id/showCart"
+            android:layout_width="63dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="102dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="0dp">
+
+            <TextView
+                android:id="@+id/cart_size"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="40dp"
+                android:gravity="center"
+                android:background="@drawable/item_count"
+                android:elevation="50dp"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:targetApi="lollipop" />
+
+        </RelativeLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </RelativeLayout>

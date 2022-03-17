@@ -1,28 +1,103 @@
-package com.example.squid
+package com.example.squid1
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import com.example.squid.fragments.*
+import com.example.squid.fragments.CartFragment
+import com.example.squid.fragments.FavoritesFragment
+import com.example.squid.fragments.HomeFragment
 import com.example.squid1.fragments.InscriptionFragment
 import com.example.squid1.fragments.SearchFragment
 import com.example.squid1.fragments.UserFragment
+import android.content.Intent
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import android.util.Log
+import android.widget.Toast
+import com.example.squid.R
+import com.example.squid1.Api.APIConfig
+import com.example.squid1.Api.APIService
+import com.example.squid1.Api.Product
+import com.example.squid1.ProductAdapter
+import com.example.squid1.ShoppingCart
+import com.example.squid1.ShoppingCartActivity
+import io.paperdb.Paper
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_user.*
-import kotlinx.android.synthetic.main.fragment_user.view.*
+import kotlinx.android.synthetic.main.fragment_cart.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import retrofit2.Call
+import retrofit2.Response
 
 
-class MainActivity : AppCompatActivity()  {
-    @SuppressLint("WrongConstant")
+class MainActivity : AppCompatActivity() {
+    private lateinit var apiService: APIService
+    private lateinit var productAdapter: ProductAdapter
+
+    private var products = listOf<Product>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Paper.init(this)
+
         setContentView(R.layout.activity_main)
 
-        supportActionBar?.hide()
+        setSupportActionBar(toolbar)
+        apiService = APIConfig.getRetrofitClient(this).create(APIService::class.java)
+
+
+        swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorPrimary))
+
+        swipeRefreshLayout.isRefreshing = true
+
+//        val layoutManager = StaggeredGridLayoutManager(this, Lin)
+
+        products_recyclerview.layoutManager =
+            StaggeredGridLayoutManager(
+                2,
+                StaggeredGridLayoutManager.VERTICAL
+            )
+
+
+        cart_size.text = ShoppingCart.getShoppingCartSize().toString()
+
+        getProducts()
+
+
+        showCart.setOnClickListener {
+
+            startActivity(Intent(this, ShoppingCartActivity::class.java))
+        }
+
+    }
+
+
+    private fun getProducts() {
+
+        apiService.getProducts().enqueue(object : retrofit2.Callback<List<Product>> {
+            override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+
+                print(t.message)
+                Log.d("Data error", t.message.toString())
+                Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
+
+            }
+
+            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
+
+                swipeRefreshLayout.isRefreshing = false
+                swipeRefreshLayout.isEnabled = false
+
+                products = response.body()!!
+
+                productAdapter = ProductAdapter(this@MainActivity, products)
+
+                products_recyclerview.adapter = productAdapter
+
+                productAdapter.notifyDataSetChanged()
+
+            }
+
+        })
 
         val homeFragment = HomeFragment()
         val favoritesFragment = FavoritesFragment()
@@ -46,7 +121,6 @@ class MainActivity : AppCompatActivity()  {
             true
         }
     }
-
 
     private fun makeCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {

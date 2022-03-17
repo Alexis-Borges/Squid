@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/app.iml" filepath="$PROJECT_DIR$/.idea/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/928529042/Squid1.iml" filepath="$PROJECT_DIR$/.idea/modules/928529042/Squid1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Squid1.app.iml" filepath="$PROJECT_DIR$/.idea/modules/Squid1.app.iml" />
     </modules>
   </component>
 </project>
