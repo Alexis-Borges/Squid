@@ -17,7 +17,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            app:titleTextColor="@color/colorAccent"
+            app:titleTextColor="#272727"
             app:title="Shopping Cart"
             android:background="@android:color/white"
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
         app:elevation="4dp"
         android:layout_gravity="bottom"
         android:elevation="15dp"
-        android:background="@color/colorAccent"
+        android:background="#272727"
         android:layout_width="match_parent"
         android:layout_height="66dp"
         tools:targetApi="lollipop">
@@ -76,19 +76,19 @@
 
 
         <Button
-            android:textSize="19sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
+            android:background="@color/red_all"
             android:padding="10dp"
-            android:layout_alignParentEnd="true"
             android:text="Checkout"
             android:textAllCaps="false"
-            android:background="@drawable/round_background"
             android:textColor="@android:color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"/>
+            android:textSize="19sp" />
 
 
     </RelativeLayout>
