@@ -33,7 +33,6 @@ class ShoppingCart {
 
             if (targetItem != null) {
 
-                    Toast.makeText(context, "great quantity", Toast.LENGTH_SHORT).show()
                     targetItem.quantity--
                     cart.remove(targetItem)
             }

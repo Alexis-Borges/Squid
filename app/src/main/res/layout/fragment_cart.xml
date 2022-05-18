@@ -18,7 +18,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             app:titleTextColor="#272727"
-            app:title="Shopping Cart"
+            app:title="Panier  🛒"
             android:background="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"/>
@@ -85,7 +85,7 @@
             android:layout_marginRight="15dp"
             android:background="@color/red_all"
             android:padding="10dp"
-            android:text="Checkout"
+            android:text="Commander 🦑"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="19sp" />

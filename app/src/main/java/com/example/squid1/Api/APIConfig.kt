@@ -10,7 +10,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object APIConfig {
 
-    val BASE_URL = "https://squid-marketplace.herokuapp.com/articles/get/"
+    val BASE_URL = "https://test-bash-squid.herokuapp.com/"
 
     private var retrofit: Retrofit? = null
 

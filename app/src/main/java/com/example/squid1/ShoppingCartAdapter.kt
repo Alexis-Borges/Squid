@@ -39,7 +39,7 @@ class ShoppingCartAdapter(var context: Context, var cartItems: List<CartItem>) :
 
             itemView.product_name.text = cartItem.product.name
 
-            itemView.product_price.text = "$${cartItem.product.price}"
+            itemView.product_price.text = "${cartItem.product.price} €"
 
             itemView.product_quantity.text = cartItem.quantity.toString()
 

@@ -41,7 +41,7 @@ class ShoppingCartActivity : AppCompatActivity() {
             .fold(0.toDouble()) { acc, cartItem -> acc + cartItem.quantity.times(cartItem.product.price!!.toDouble()) }
 
 
-        total_price.text = "$${totalPrice}"
+        total_price.text = "${totalPrice} €"
     }
 
 

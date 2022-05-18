@@ -20,9 +20,9 @@
             android:layout_marginStart="115dp"
             android:layout_marginEnd="115dp"
             android:layout_marginBottom="-113dp"
-            android:background="@color/teal_700"
+            android:background="@color/red_all"
             android:text="Connexion"
-            android:textColor="#000000" />
+            android:textColor="#FFF" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
@@ -88,9 +88,9 @@
             android:layout_marginStart="115dp"
             android:layout_marginEnd="115dp"
             android:layout_marginBottom="-185dp"
-            android:background="@color/teal_700"
+            android:background="@color/red_all"
             android:text="S'inscrire"
-            android:textColor="#000000" />
+            android:textColor="#FFF" />
 
     </RelativeLayout>
 
