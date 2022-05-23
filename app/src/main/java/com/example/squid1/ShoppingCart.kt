@@ -28,7 +28,6 @@ class ShoppingCart {
 
             val cart = getCart()
 
-
             val targetItem = cart.singleOrNull { it.product.id == cartItem.product.id }
 
             if (targetItem != null) {
@@ -41,7 +40,7 @@ class ShoppingCart {
 
         }
 
-        private fun saveCart(cart: MutableList<CartItem>) {
+        fun saveCart(cart: MutableList<CartItem>) {
             Paper.book().write("cart", cart)
         }
 
@@ -58,6 +57,7 @@ class ShoppingCart {
 
             return cartSize
         }
+
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.squid1
 
+import android.content.Context
 import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import com.example.squid.R
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_blank.*
 import kotlinx.android.synthetic.main.fragment_cart.*
 
 class ShoppingCartActivity : AppCompatActivity() {
@@ -17,7 +20,6 @@ class ShoppingCartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_cart)
-
 
         setSupportActionBar(toolbar)
 
@@ -42,7 +44,9 @@ class ShoppingCartActivity : AppCompatActivity() {
 
 
         total_price.text = "${totalPrice} €"
+
     }
+
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

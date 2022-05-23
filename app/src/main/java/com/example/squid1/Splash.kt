@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.squid.R
+import com.example.squid1.Login.LoginActivity
 import kotlinx.android.synthetic.main.splash.*
 
 class Splash : AppCompatActivity() {
@@ -13,7 +14,7 @@ class Splash : AppCompatActivity() {
 
         icon.alpha = 0f
         icon.animate().setDuration(2500).alpha(1f).withEndAction {
-            val i = Intent(this, MainActivity::class.java)
+            val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
             finish()

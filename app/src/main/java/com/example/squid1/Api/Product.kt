@@ -6,13 +6,11 @@ import com.google.gson.annotations.SerializedName
 
 data class Product(
     @SerializedName("category")
-    val category: List<Any>,
+    val category: Category,
     @SerializedName("color")
     val color: String,
     @SerializedName("description")
     val description: String,
-    @SerializedName("favorites")
-    val favorites: List<Any>,
     @SerializedName("id")
     val id: Int,
     @SerializedName("images")
@@ -23,8 +21,6 @@ data class Product(
     val orders: List<Any>,
     @SerializedName("price")
     val price: Int,
-    @SerializedName("ratings")
-    val ratings: List<Any>,
     @SerializedName("stock")
     val stock: Int,
 )

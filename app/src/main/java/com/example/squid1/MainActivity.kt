@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.squid.fragments.CartFragment
 import com.example.squid.fragments.FavoritesFragment
-import com.example.squid1.fragments.InscriptionFragment
-import com.example.squid1.fragments.SearchFragment
-import com.example.squid1.fragments.UserFragment
 import android.content.Intent
+import androidx.lifecycle.Observer
+import androidx.lifecycle.asLiveData
 import com.example.squid.R
+import com.example.squid1.Login.LoginActivity
+import com.example.squid1.Search.SearchFragment
+//import com.example.squid1.Search.SearchFragment
 import com.example.squid1.fragments.BlankFragment
+import com.example.squid1.fragments.ProfileFragment
 import io.paperdb.Paper
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_cart.*
@@ -36,10 +39,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         val favoritesFragment = FavoritesFragment()
-        val cartFragment = CartFragment()
+       // val cartFragment = CartFragment()
         val searchFragment = SearchFragment()
-        val userFragment = UserFragment()
-        val inscriptionFragment = InscriptionFragment()
+        val profileFragment = ProfileFragment()
         val blankFragment = BlankFragment()
 
        makeCurrentFragment(blankFragment)
@@ -48,10 +50,10 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.ic_home -> makeCurrentFragment(blankFragment)
-                R.id.ic_cart -> makeCurrentFragment(cartFragment)
+               // R.id.ic_cart -> makeCurrentFragment(cartFragment)
                 R.id.ic_favorites -> makeCurrentFragment(favoritesFragment)
                 R.id.ic_search -> makeCurrentFragment(searchFragment)
-                R.id.ic_user -> makeCurrentFragment(userFragment)
+                R.id.ic_user -> makeCurrentFragment(profileFragment)
             }
             true
         }

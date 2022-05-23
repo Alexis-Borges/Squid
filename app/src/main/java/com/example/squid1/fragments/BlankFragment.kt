@@ -68,9 +68,6 @@ class BlankFragment : Fragment() {
 
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
 
-                swipeRefreshLayout.isRefreshing = false
-                swipeRefreshLayout.isEnabled = false
-
                 products = response.body()!!
 
                 productAdapter = activity?.let { ProductAdapter(it, products) }!!

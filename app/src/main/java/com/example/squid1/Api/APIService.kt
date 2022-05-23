@@ -1,5 +1,6 @@
 package com.example.squid1.Api
 
+import android.provider.ContactsContract
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -14,8 +15,12 @@ interface APIService {
     ): Call<List<Product>>
 
     @GET("/category")
-    fun getCategorys(
-        @Query("id_category") offset: Long,
+    fun getCategories(
 
     ): Call<List<Category>>
+
+    @GET("/articles/getByCategory")
+    fun getProductsByCategory(
+        @Query ("id") id : Int
+    ): Call<List<Product>>
 }

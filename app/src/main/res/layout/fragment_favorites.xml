@@ -17,8 +17,8 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="89dp"
             android:font="@font/roboto"
-            android:textColor="@color/red_all"
             android:text="Vos Produits Favoris S'affiche Ici"
+            android:textColor="@color/red_all"
             android:textSize="15dp" />
 
     </RelativeLayout>

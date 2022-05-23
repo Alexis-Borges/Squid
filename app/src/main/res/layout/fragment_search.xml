@@ -4,107 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.squid1.fragments.SearchFragment">
+    tools:context="com.example.squid1.Search.SearchFragment">
 
-    <RelativeLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="275dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.squid1.Search.SearchFragment">
+        <SearchView
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="97dp"
-            android:layout_marginTop="27dp"
-            android:layout_marginEnd="21dp"
-            android:ems="10"
-            android:hint="Recherche"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="25dp"
+            android:queryHint="table basse"
+            android:iconifiedByDefault="false"
+            android:queryBackground="@android:color/transparent">
+        </SearchView>
 
-        <ImageView
-            android:id="@+id/logo_search"
-            android:layout_width="wrap_content"
-            android:layout_height="49dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="317dp"
-            android:src="@drawable/ic_search" />
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/categorie5"
-            android:layout_width="336dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="346dp"
-            android:gravity="left|center_vertical"
-            android:text="Table                                                                      >" />
-
-        <Button
-            android:id="@+id/categorie4"
-            android:layout_width="336dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="410dp"
-            android:gravity="left|center_vertical"
-            android:text="Canapé                                                                   >" />
-
-        <Button
-            android:id="@+id/categorie6"
-            android:layout_width="336dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="278dp"
-            android:gravity="left|center_vertical"
-            android:text="Bureau                                                                   >" />
-
-        <Button
-            android:id="@+id/categorie7"
-            android:layout_width="334dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="214dp"
-            android:gravity="left|center_vertical"
-            android:text="Commode                                                              >" />
-
-        <Button
-            android:id="@+id/categorie8"
-            android:layout_width="334dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="147dp"
-            android:gravity="left|center_vertical"
-            android:text="Chaise                                                                    >" />
-
-        <Button
-            android:id="@+id/categorie3"
-            android:layout_width="336dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="475dp"
-            android:gravity="left|center_vertical"
-            android:text="Armoire                                                                 >" />
-
-    </RelativeLayout>
-
+    </LinearLayout>
 
 </FrameLayout>

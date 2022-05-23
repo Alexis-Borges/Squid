@@ -63,7 +63,7 @@
                 />
 
             <TextView
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="12dp"
                 android:id="@+id/total_price"
                 android:textSize="24sp"
                 android:textColor="@android:color/white"

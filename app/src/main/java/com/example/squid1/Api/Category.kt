@@ -4,8 +4,9 @@ import com.example.squid1.Image
 import com.google.gson.annotations.SerializedName
 
 data class Category(
-    @SerializedName("id_category")
-    val category: Long,
+    @SerializedName("id")
+    val category: Int,
     @SerializedName("name")
     val name: String,
 )
+

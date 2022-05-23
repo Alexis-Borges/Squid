@@ -32,7 +32,6 @@ class ProductAdapter(var context: Context, var products: List<Product> = arrayLi
 
         viewHolder.bindProduct(products[position])
 
-
     // (context as MainActivity).coordinator
 
     }
