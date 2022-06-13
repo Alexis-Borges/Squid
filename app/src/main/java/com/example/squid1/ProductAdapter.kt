@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import com.example.squid.R
 import com.example.squid1.Api.Product
+import com.example.squid1.Api.listProductFavourite
 import com.squareup.picasso.Picasso
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
@@ -105,6 +107,30 @@ class ProductAdapter(var context: Context, var products: List<Product> = arrayLi
 //                Toast.makeText(itemView.context, "${product.name} added to your cart", Toast.LENGTH_SHORT).show()
 
 
+            }
+
+            var imgBlackBorderHeart = itemView.findViewById<ImageView>(R.id.imgBlackBorderHeart)
+            var imgRedHeart = itemView.findViewById<ImageView>(R.id.imgRedHeart)
+
+            // Manage the toggle event on heart's article click
+            fun showHide(imgViews: Array<ImageView>) {
+                for (view in imgViews)
+                    view.visibility =
+                        if (view.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
+            }
+
+            val imgHeart = arrayOf(imgBlackBorderHeart, imgRedHeart)
+            imgBlackBorderHeart.setOnClickListener {
+                showHide(imgHeart)
+                listProductFavourite.add(product)
+            }
+            imgRedHeart.setOnClickListener {
+                showHide(imgHeart)
+                listProductFavourite.remove(product)
+            }
+
+            if (product in listProductFavourite) {
+                showHide(imgHeart)
             }
 
         }

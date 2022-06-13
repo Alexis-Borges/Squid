@@ -4,10 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/alexi/.gradle/caches/transforms-3/0ec5ebe9c9343d71bbab83907e030f4e/transformed/appcompat-1.4.1/res/drawable/abc_ic_ab_back_material.xml" value="0.153" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/layout/activity_result_search.xml" value="0.3625" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/layout/fragment_blank.xml" value="0.3625" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/layout/fragment_bookmark.xml" value="0.33" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/layout/fragment_favorites.xml" value="0.26944444444444443" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/layout/fragment_login.xml" value="0.3625" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/layout/fragment_search.xml" value="0.3625" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/layout/fragment_user.xml" value="0.3625" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/layout/product_row_item.xml" value="0.3625" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/menu/menu.xml" value="0.3625" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/menu/menu_scrolling.xml" value="0.3625" />
+        <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid/app/src/main/res/menu/nav_menu.xml" value="0.3625" />
         <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid1/app/src/main/res/layout/activity_main.xml" value="0.48148148148148145" />
         <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid1/app/src/main/res/layout/cart_list_item.xml" value="0.3625" />
         <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid1/app/src/main/res/layout/fragment_cart.xml" value="0.3625" />
         <entry key="..\:/Users/alexi/AndroidStudioProjects/Squid1/app/src/main/res/layout/product_row_item.xml" value="0.3625" />
+        <entry key="..\:/Users/alexi/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_expandable_list_item_1.xml" value="0.3625" />
         <entry key="..\:/Users/alexi/StudioProjects/Squid test/app/src/main/res/drawable/bg_button_primary.xml" value="0.1765" />
         <entry key="..\:/Users/alexi/StudioProjects/Squid test/app/src/main/res/drawable/bg_login_page1.xml" value="0.238" />
         <entry key="..\:/Users/alexi/StudioProjects/Squid test/app/src/main/res/layout-v26/fragment_search.xml" value="0.3614583333333333" />

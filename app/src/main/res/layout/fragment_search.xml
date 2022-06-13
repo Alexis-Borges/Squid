@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginBottom="25dp"
-            android:queryHint="table basse"
+            android:queryHint="Table"
             android:iconifiedByDefault="false"
             android:queryBackground="@android:color/transparent">
         </SearchView>

@@ -27,13 +27,13 @@ class ResultSearchActivity : AppCompatActivity() {
     private lateinit var apiService: APIService
     private lateinit var productAdapter: ProductAdapter
 
-    private var products = listOf<Product>()
 
     @SuppressLint("LongLogTag")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResultSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         if (intent.extras?.containsKey("CATEGORY") == true) {
 
@@ -46,12 +46,10 @@ class ResultSearchActivity : AppCompatActivity() {
             binding.recyclerViewSearchResult.apply {
                 layoutManager =
                     GridLayoutManager(applicationContext, 2)
-                adapter = ProductAdapter(applicationContext, products)
+                adapter = ProductAdapter(applicationContext, listValue)
             }
 
         }
-
-
     }
 
     private fun getlistProductSortByCategory(categoryId: Int) {
@@ -72,10 +70,11 @@ class ResultSearchActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
+                Log.d("Data response",response.body().toString() )
 
-                products = response.body()!!
+                listValue = response.body()!!
 
-                productAdapter = ProductAdapter(applicationContext, products)
+                productAdapter = ProductAdapter(applicationContext, listValue)
 
                 productAdapter.notifyDataSetChanged()
 
