@@ -89,33 +89,29 @@
                 card_view:targetApi="o"
                 app:tint="@android:color/white" />
 
-            <ImageButton
+            <ImageView
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:tint="@android:color/white"
-                android:id="@+id/imgBlackBorderHeart"
+                android:id="@+id/imgWhiteBorderHeart"
                 android:src="@drawable/ic_outline_favorite"
                 android:background="#000000"
-                card_view:targetApi="o"
                 android:paddingVertical="5dp"
                 android:paddingHorizontal="20dp"
-                android:clickable="true"
-                android:visibility="visible"/>
+                />
 
-            <ImageButton
+            <ImageView
 
-                android:id="@+id/imgRedHeart"
+                android:id="@+id/imgWhiteHeart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#000000"
                 android:src="@drawable/ic_favorite"
                 app:tint="@android:color/white"
-                card_view:targetApi="o"
                 android:paddingVertical="5dp"
                 android:paddingHorizontal="20dp"
-                android:clickable="true"
-                android:visibility="gone"
+
                 />
 
 

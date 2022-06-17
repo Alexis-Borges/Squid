@@ -7,9 +7,7 @@ import android.os.Bundle
 import com.example.squid.R
 import android.content.Intent
 import android.view.View
-import com.example.squid1.Login.LoginActivity
 import okhttp3.ResponseBody
-import com.example.squid1.Login.RetrofitClient
 import android.widget.Toast
 import retrofit2.Call
 import retrofit2.Callback
@@ -47,34 +45,43 @@ class RegisterActivity : AppCompatActivity() {
             etPassword!!.requestFocus()
             return
         }
-        val call = RetrofitClient
+        RetrofitClient
             .getInstance()
             .api
-            .createUser(User(userName, password))
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                var s = ""
-                try {
-                    s = response.body()!!.string()
-                } catch (e: IOException) {
-                    e.printStackTrace()
+            .createUser(User(userName, password))?.enqueue(object : Callback<ResponseBody?> {
+                override fun onResponse(
+                    call: Call<ResponseBody?>,
+                    response: Response<ResponseBody?>
+                ) {
+                    var s = ""
+                    try {
+                        s = response.body()!!.string()
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                    if (s == "OK") {
+                        Toast.makeText(
+                            this@RegisterActivity,
+                            "Successfully registered. Please login",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+                    } else  {
+                        Toast.makeText(
+                            this@RegisterActivity,
+                            "User already exists!",
+                            Toast.LENGTH_LONG
+                        )
+                            .show()
+                        startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+                    }
                 }
-                if (s == "Ok") {
-                    Toast.makeText(
-                        this@RegisterActivity,
-                        "Successfully registered. Please login",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-                } else {
-                    Toast.makeText(this@RegisterActivity, "User already exists!", Toast.LENGTH_LONG)
-                        .show()
-                }
-            }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@RegisterActivity, t.message, Toast.LENGTH_LONG).show()
-            }
-        })
+                override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
+                    Toast.makeText(this@RegisterActivity, t.message, Toast.LENGTH_LONG).show()
+                }
+
+            })
     }
 }
+

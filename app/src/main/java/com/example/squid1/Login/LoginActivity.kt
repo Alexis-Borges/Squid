@@ -51,40 +51,42 @@ class LoginActivity : AppCompatActivity() {
             .getInstance()
             .api
             .checkUser(User(userName, password))
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                var s = ""
-                try {
-                    s = response.body()!!.string()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-                if (s == "Ok") {
-                    Toast.makeText(this@LoginActivity, "User logged in!", Toast.LENGTH_LONG).show()
-                    startActivity(
-                        Intent(
+        if (call != null) {
+            call.enqueue(object : Callback<ResponseBody?> {
+                override fun onResponse(call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
+                    var s = ""
+                    try {
+                        s = response.body()!!.string()
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                    if (s == "") {
+                        Toast.makeText(this@LoginActivity, "User logged in!", Toast.LENGTH_LONG).show()
+                        startActivity(
+                            Intent(
+                                this@LoginActivity,
+                                MainActivity::class.java
+                            ).putExtra("username", userName)
+                        )
+                    } else {
+                        Toast.makeText(
                             this@LoginActivity,
-                            MainActivity::class.java
-                        ).putExtra("username", userName)
-                    )
-                } else {
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "Welcome ! Happy Squidding",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    startActivity(
-                        Intent(
-                            this@LoginActivity,
-                            MainActivity::class.java
-                        ).putExtra("username", userName)
-                    )
+                            "Welcome ! Happy Squidding",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        startActivity(
+                            Intent(
+                                this@LoginActivity,
+                                MainActivity::class.java
+                            ).putExtra("username", userName)
+                        )
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(this@LoginActivity, t.message, Toast.LENGTH_LONG).show()
-            }
-        })
+                override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
+                    Toast.makeText(this@LoginActivity, t.message, Toast.LENGTH_LONG).show()
+                }
+            })
+        }
     }
 }

@@ -109,22 +109,17 @@ class ProductAdapter(var context: Context, var products: List<Product> = arrayLi
 
             }
 
-            var imgBlackBorderHeart = itemView.findViewById<ImageView>(R.id.imgBlackBorderHeart)
-            var imgRedHeart = itemView.findViewById<ImageView>(R.id.imgRedHeart)
+            var imgWhiteBorderHeart = itemView.findViewById<ImageView>(R.id.imgWhiteBorderHeart)
+            var imgWhiteHeart = itemView.findViewById<ImageView>(R.id.imgWhiteHeart)
 
-            // Manage the toggle event on heart's article click
-            fun showHide(imgViews: Array<ImageView>) {
-                for (view in imgViews)
-                    view.visibility =
-                        if (view.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
-            }
+            imgWhiteHeart.visibility = View.INVISIBLE
 
-            val imgHeart = arrayOf(imgBlackBorderHeart, imgRedHeart)
-            imgBlackBorderHeart.setOnClickListener {
+            val imgHeart = arrayOf(imgWhiteBorderHeart, imgWhiteHeart)
+            imgWhiteBorderHeart.setOnClickListener {
                 showHide(imgHeart)
                 listProductFavourite.add(product)
             }
-            imgRedHeart.setOnClickListener {
+            imgWhiteHeart.setOnClickListener {
                 showHide(imgHeart)
                 listProductFavourite.remove(product)
             }
@@ -135,4 +130,10 @@ class ProductAdapter(var context: Context, var products: List<Product> = arrayLi
 
         }
 
+        // Manage the toggle event on heart's article click
+        fun showHide(imgViews: Array<ImageView>) {
+            for (view in imgViews)
+                view.visibility =
+                    if (view.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
+        }
     }}
