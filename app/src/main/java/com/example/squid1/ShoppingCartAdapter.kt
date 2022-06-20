@@ -14,7 +14,9 @@ import kotlinx.android.synthetic.main.cart_list_item.view.*
 import kotlinx.android.synthetic.main.cart_list_item.view.product_image
 import kotlinx.android.synthetic.main.cart_list_item.view.product_name
 import kotlinx.android.synthetic.main.cart_list_item.view.product_price
+import kotlinx.android.synthetic.main.cart_list_item.view.removeItem
 import kotlinx.android.synthetic.main.fragment_blank.*
+import kotlinx.android.synthetic.main.product_row_item.view.*
 
 class ShoppingCartAdapter(var context: Context, var cartItems: List<CartItem>) :
     RecyclerView.Adapter<ShoppingCartAdapter.ViewHolder>() {
@@ -37,8 +39,7 @@ class ShoppingCartAdapter(var context: Context, var cartItems: List<CartItem>) :
 
         fun bindItem(cartItem: CartItem) {
 
-           // Picasso.get().load(cartItem.product.photos[0].filename).fit().into(itemView.product_image)
-            Picasso.get().load("https://lh3.googleusercontent.com/9WyCZqTYQilYrcz6HvuGxT53molItl9gK-5rZn-FS_mgHgz4bN_z4ytjPTxcKb6Opr-JAN1_-ZQpFvb3pboCArCPR3ms6iJC4AJzuQ=w600").fit().into(itemView.product_image)
+            Picasso.get().load(cartItem.product.image[0].filename).fit().into(itemView.product_image)
 
             itemView.product_name.text = cartItem.product.name
 
@@ -56,6 +57,7 @@ class ShoppingCartAdapter(var context: Context, var cartItems: List<CartItem>) :
                     cart.remove(targetItem)
 
                     ShoppingCart.saveCart(cart)
+
 
                 }
 

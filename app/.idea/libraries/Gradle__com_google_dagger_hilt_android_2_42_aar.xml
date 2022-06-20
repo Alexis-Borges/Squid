@@ -3,6 +3,9 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/dbea9682fe2beffd8f32b9d0563769aa/transformed/jetified-hilt-android-2.42/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f07511200de8f8c47d8667605c79ebc4/transformed/jetified-hilt-android-2.42/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4d3f12e8ede965af9584dd4bba25dee9/transformed/jetified-hilt-android-2.42/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7ce1fb6e305c8c463ad16c6a0cc488a8/transformed/jetified-hilt-android-2.42/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e2620d8feec7e3400125a576fef31162/transformed/jetified-hilt-android-2.42/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f07511200de8f8c47d8667605c79ebc4/transformed/jetified-hilt-android-2.42/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f07511200de8f8c47d8667605c79ebc4/transformed/jetified-hilt-android-2.42/AndroidManifest.xml" />
     </CLASSES>

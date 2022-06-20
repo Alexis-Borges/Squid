@@ -4,8 +4,6 @@ package com.example.squid1.Api
 import com.example.squid1.Image
 import com.google.gson.annotations.SerializedName
 
-var productList = mutableListOf<Product>()
-
 var listProductFavourite = mutableListOf<Product>()
 
 data class Product(

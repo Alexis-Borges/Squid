@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         cart_size.text = ShoppingCart.getShoppingCartSize().toString()
 
-
         showCart.setOnClickListener {
 
             startActivity(Intent(this, ShoppingCartActivity::class.java))
@@ -54,6 +53,14 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+        bottom_navigation.setOnItemReselectedListener {
+            when (it.itemId) {
+                R.id.ic_home -> refreshCurrentFragment(blankFragment)
+                R.id.ic_favorites -> refreshCurrentFragment(bookmarkFragment)
+                R.id.ic_search -> refreshCurrentFragment(searchFragment)
+            }
+            true
+        }
     }
 
     private fun makeCurrentFragment(fragment: Fragment) =
@@ -61,6 +68,12 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.fl_wrapper, fragment)
             commit()
         }
+
+    fun refreshCurrentFragment(fragment: Fragment) {
+        var currentFragment = supportFragmentManager.findFragmentById(fragment.id)!!
+        supportFragmentManager.beginTransaction().detach(currentFragment).commit()
+        supportFragmentManager.beginTransaction().attach(currentFragment).commit()
+    }
 }
 
 

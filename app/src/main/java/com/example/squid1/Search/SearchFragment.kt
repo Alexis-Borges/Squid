@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.datastore.preferences.protobuf.ListValue
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -123,12 +122,11 @@ class SearchFragment : Fragment() {
                     listValue.add(cate.name)
 
                 }
-
-//                    productAdapter = activity?.let { ProductAdapter(it, category) }!!
+//                   productAdapter = activity?.let { ProductAdapter(it, products = ) }!!
 //
-//                    products_recyclerview.adapter = productAdapter
+//                   products_recyclerview.adapter = productAdapter
 //
-//                    productAdapter.notifyDataSetChanged()
+//                   productAdapter.notifyDataSetChanged()
 
             }
 

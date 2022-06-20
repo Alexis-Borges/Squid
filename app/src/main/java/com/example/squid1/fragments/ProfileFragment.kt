@@ -1,28 +1,25 @@
 package com.example.squid1.fragments
 
+
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.fragment.app.FragmentManager
+import com.auth0.android.jwt.JWT
 import com.example.squid.R
 import com.example.squid.databinding.FragmentProfileBinding
-import com.example.squid1.Api.APIConfig
-import com.example.squid1.Api.APIService
-import com.example.squid1.Api.Product
-import com.example.squid1.Api.user
-import com.example.squid1.MainActivity
-import com.example.squid1.ProductAdapter
-import kotlinx.android.synthetic.main.fragment_blank.*
-import retrofit2.Call
-import retrofit2.Response
+import com.example.squid1.Login.AuthManagement
+import kotlinx.android.synthetic.main.fragment_profile.*
+import java.util.*
 
 
 class ProfileFragment : Fragment() {
@@ -30,40 +27,50 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
 
     private val binding get() = _binding!!
-        override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-            return inflater.inflate(R.layout.fragment_profile, container, false)
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val token = activity?.let { AuthManagement.getToken(it) }
+        val jwt = token?.let { JWT (it) }
+        val userId = jwt?.getClaim("id")?.asString()
+        val userEmail = jwt?.getClaim("email")?.asString()
+        val UserAdmin = jwt?.getClaim("isAdmin")?.asString()
 
-//        val tvPayment: TextView = binding.tvPayment
-//        tvPayment.setOnClickListener {
-//            val intent = Intent(context, PaymentActivity::class.java)
-//            startActivity(intent)
-//        }
 
-        val logout: Button = binding.logout
-        logout.setOnClickListener {
-            logout()
-            val intent = Intent(context, MainActivity::class.java)
-            startActivity(intent)
+
+        var cpmmande = view.findViewById<Button>(R.id.contacts)
+        commande.setOnClickListener {
+
         }
-        return root
+
+        var contact = view.findViewById<Button>(R.id.contacts)
+        contact.setOnClickListener {
+
+        }
+
+        var logout = view.findViewById<Button>(R.id.logout)
+        logout.setOnClickListener {
+            activity?.let { AuthManagement.disconnect(it) }
+            restartApp()
+        }
+
+       return view
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun restartApp() {
+        val i = requireActivity().baseContext.packageManager
+            .getLaunchIntentForPackage(requireActivity().baseContext.packageName)
+        i!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(i)
     }
 
-    fun logout() {
-        user = null
-    }
 }
 
 

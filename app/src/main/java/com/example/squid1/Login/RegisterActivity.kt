@@ -9,20 +9,34 @@ import android.content.Intent
 import android.view.View
 import okhttp3.ResponseBody
 import android.widget.Toast
+import com.example.squid1.Utilities
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.IOException
+import java.net.HttpURLConnection
 
 class RegisterActivity : AppCompatActivity() {
-    private var etUsername: EditText? = null
-    private var etPassword: EditText? = null
+    lateinit var etUsername: EditText
+    lateinit var etPassword: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_register)
         etUsername = findViewById(R.id.etRUserName)
         etPassword = findViewById(R.id.etRPassword)
-        findViewById<View>(R.id.btnRegister).setOnClickListener { registerUser() }
+
+        findViewById<View>(R.id.btnRegister).setOnClickListener {
+
+            if (Utilities.isValidMail(etUsername.text.toString())) {
+                registerUser()
+            } else {
+                Toast.makeText(
+                    this@RegisterActivity,
+                    "Email Field Incorrect   🚫",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+
         findViewById<View>(R.id.tvLoginLink).setOnClickListener {
             startActivity(
                 Intent(
@@ -53,13 +67,8 @@ class RegisterActivity : AppCompatActivity() {
                     call: Call<ResponseBody?>,
                     response: Response<ResponseBody?>
                 ) {
-                    var s = ""
-                    try {
-                        s = response.body()!!.string()
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                    }
-                    if (s == "OK") {
+                    if (response.code() == HttpURLConnection.HTTP_OK) {
+
                         Toast.makeText(
                             this@RegisterActivity,
                             "Successfully registered. Please login",
@@ -73,13 +82,13 @@ class RegisterActivity : AppCompatActivity() {
                             Toast.LENGTH_LONG
                         )
                             .show()
-                        startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
                     Toast.makeText(this@RegisterActivity, t.message, Toast.LENGTH_LONG).show()
                 }
+
 
             })
     }

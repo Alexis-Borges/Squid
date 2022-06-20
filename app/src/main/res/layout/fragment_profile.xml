@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contacte"
+        app:layout_constraintTop_toBottomOf="@+id/contacts"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/contacte"
+        android:id="@+id/contacts"
         android:layout_width="0dp"
         android:layout_height="66dp"
         android:layout_marginStart="60dp"
@@ -112,6 +112,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

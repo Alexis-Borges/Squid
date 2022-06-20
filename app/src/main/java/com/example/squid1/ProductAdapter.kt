@@ -34,8 +34,6 @@ class ProductAdapter(var context: Context, var products: List<Product> = arrayLi
 
         viewHolder.bindProduct(products[position])
 
-    // (context as MainActivity).coordinator
-
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -47,15 +45,8 @@ class ProductAdapter(var context: Context, var products: List<Product> = arrayLi
             itemView.product_price.text = "${product.price.toString()} €"
             itemView.product_stock.text = "${product.stock.toString()} - Restant"
 
-             Picasso.get().load("https://lh3.googleusercontent.com/9WyCZqTYQilYrcz6HvuGxT53molItl9gK-5rZn-FS_mgHgz4bN_z4ytjPTxcKb6Opr-JAN1_-ZQpFvb3pboCArCPR3ms6iJC4AJzuQ=w600").fit().into(itemView.product_image)
-//            Picasso.get().load(product.image[0].filename).fit().into(itemView.product_image)
 
-            //                val products = mutableListOf<Product>()
-//                products.add(product)
-//
-
-//                ShoppingCart.addItem(item)
-
+            Picasso.get().load(product.image[0].filename).fit().into(itemView.product_image)
 
             Observable.create(ObservableOnSubscribe<MutableList<CartItem>> {
 

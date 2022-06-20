@@ -8,10 +8,8 @@ import retrofit2.http.*
 interface APIService {
 
     @Headers("Content-Type: application/json", "Accept: application/json")
-    @GET("/articles")
+    @GET("/articles/trending")
     fun getProducts(
-//        @Query("offset") offset: Int,
-//        @Query("limit") limit: Int
     ): Call<List<Product>>
 
     @GET("/category")

@@ -6,25 +6,44 @@ import android.os.Bundle
 import com.example.squid.R
 import android.content.Intent
 import android.view.View
-import com.example.squid1.Login.RegisterActivity
 import okhttp3.ResponseBody
-import com.example.squid1.Login.RetrofitClient
 import android.widget.Toast
+import com.auth0.android.jwt.JWT
 import com.example.squid1.MainActivity
+import com.example.squid1.Utilities
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.IOException
+
+import java.net.HttpURLConnection.HTTP_OK
+
 
 class LoginActivity : AppCompatActivity() {
-    private var etUsername: EditText? = null
-    private var etPassword: EditText? = null
+     lateinit var etUsername: EditText
+    lateinit var etPassword: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_login)
         etUsername = findViewById(R.id.etUserName)
         etPassword = findViewById(R.id.etPassword)
-        findViewById<View>(R.id.btnLogin).setOnClickListener { loginUser() }
+
+        findViewById<View>(R.id.btnLogin).setOnClickListener {
+
+            if (Utilities.isValidMail(etUsername.text.toString())) {
+                loginUser()
+            } else {
+                Toast.makeText(
+                    this@LoginActivity,
+                    "Email Field Incorrect   🚫",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+        }
+
+
         findViewById<View>(R.id.tvRegisterLink).setOnClickListener {
             startActivity(
                 Intent(
@@ -53,33 +72,35 @@ class LoginActivity : AppCompatActivity() {
             .checkUser(User(userName, password))
         if (call != null) {
             call.enqueue(object : Callback<ResponseBody?> {
-                override fun onResponse(call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
-                    var s = ""
-                    try {
-                        s = response.body()!!.string()
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                    }
-                    if (s == "") {
-                        Toast.makeText(this@LoginActivity, "User logged in!", Toast.LENGTH_LONG).show()
-                        startActivity(
-                            Intent(
-                                this@LoginActivity,
-                                MainActivity::class.java
-                            ).putExtra("username", userName)
-                        )
-                    } else {
+                override fun onResponse(
+                    call: Call<ResponseBody?>,
+                    response: Response<ResponseBody?>
+                ) {
+
+                    if (response.code() == HTTP_OK) {
+                        response.body()
+                            ?.let { AuthManagement.saveToken(it.string(), this@LoginActivity) }
+                        val token = AuthManagement.getToken(this@LoginActivity)
+                        val jwt = token?.let { JWT (it) }
+                        val userId = jwt?.getClaim("id")?.asString()
+
                         Toast.makeText(
                             this@LoginActivity,
-                            "Welcome ! Happy Squidding",
+                            "User logged in ! Welcome, Happy Squidding",
                             Toast.LENGTH_LONG
                         ).show()
                         startActivity(
                             Intent(
                                 this@LoginActivity,
                                 MainActivity::class.java
-                            ).putExtra("username", userName)
+                            )
                         )
+                    } else {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Invalid credentials try again!",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
 
