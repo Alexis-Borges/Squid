@@ -13,36 +13,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eeb2280e-85fd-4a60-86da-23f8711ccec9" name="Default Changelist" comment="JWT done">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Cart/ShoppingCartFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/APIConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/APIConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/APIService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/APIService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Category.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Product.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Product.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Rating.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/CartItem.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Image.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/AuthManagement.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/AuthManagement.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/DashboardActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/LoginActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/ProductAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/ProductAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Search/ResultSearchActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Search/ResultSearchActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Search/SearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Search/SearchFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/ShoppingCart.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/ShoppingCartActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/ShoppingCartAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Cart/ShoppingCartAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/fragments/BlankFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/fragments/BlankFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/fragments/BookmarkFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/fragments/BookmarkFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/fragments/CartFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/fragments/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/fragments/ProfileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/cart_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/cart_list_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_cart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_cart.xml" afterDir="false" />
-    </list>
+    <list default="true" id="eeb2280e-85fd-4a60-86da-23f8711ccec9" name="Default Changelist" comment="cartDone" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -332,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655759683617</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="cartDone">
+      <created>1655918956020</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655918956020</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -348,10 +326,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cartDone" />
     <MESSAGE value="logindone" />
     <MESSAGE value="JWT done" />
-    <option name="LAST_COMMIT_MESSAGE" value="JWT done" />
+    <MESSAGE value="cartDone" />
+    <option name="LAST_COMMIT_MESSAGE" value="cartDone" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
