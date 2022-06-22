@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.squid.R
@@ -70,7 +69,7 @@ class BlankFragment : Fragment() {
 
                 products = response.body()!!
 
-                productAdapter = activity?.let { ProductAdapter(it, products) }!!
+                productAdapter = activity?.let { ProductAdapter(it, it, products ) }!!
 
                 products_recyclerview.adapter = productAdapter
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:background="#fffffdff"
     android:layout_height="match_parent"
-    tools:context=".fragments.CartFragment">
+    tools:context="com.example.squid1.Cart.ShoppingCartFragment">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -33,7 +33,6 @@
         android:layout_margin="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-
     <RelativeLayout
         android:padding="8dp"
         app:elevation="4dp"
@@ -46,36 +45,37 @@
 
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_height="wrap_content"
             tools:ignore="RtlCompat">
 
             <TextView
                 android:id="@+id/totalLabel"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:text="Total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
+                android:text="Total : "
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
 
             <TextView
-                android:layout_marginStart="12dp"
                 android:id="@+id/total_price"
-                android:textSize="24sp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:ignore="RtlCompat"/>
+                android:layout_marginStart="12dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 
 
         <Button
+            android:id="@+id/checkoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -89,6 +89,21 @@
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/totalCartPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="75dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toStartOf="@+id/checkoutButton"
+            android:gravity="right"
+            android:text="0.0 €"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
     </RelativeLayout>

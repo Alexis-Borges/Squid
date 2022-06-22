@@ -1,26 +1,40 @@
 package com.example.squid1
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
-import com.google.android.material.snackbar.Snackbar
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
+import com.auth0.android.jwt.JWT
 import com.example.squid.R
+import com.example.squid1.Api.APIConfig
+import com.example.squid1.Api.APIService
 import com.example.squid1.Api.Product
 import com.example.squid1.Api.listProductFavourite
+import com.example.squid1.Login.AuthManagement
+import com.google.android.material.internal.ContextUtils
 import com.squareup.picasso.Picasso
-import io.reactivex.Observable
-import io.reactivex.ObservableOnSubscribe
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_blank.*
+import kotlinx.android.synthetic.main.cart_list_item.view.*
 import kotlinx.android.synthetic.main.product_row_item.view.*
+import kotlinx.android.synthetic.main.product_row_item.view.product_image
+import kotlinx.android.synthetic.main.product_row_item.view.product_name
+import kotlinx.android.synthetic.main.product_row_item.view.product_price
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class ProductAdapter(var context: Context, var products: List<Product> = arrayListOf()) :
+private lateinit var apiService: APIService
+
+class ProductAdapter(var context: Context, act: Activity, var products: List<Product> = arrayListOf()) :
     RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+    private val activity = act
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
 
         val view = LayoutInflater.from(context).inflate(R.layout.product_row_item, parent, false)
@@ -32,73 +46,101 @@ class ProductAdapter(var context: Context, var products: List<Product> = arrayLi
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        viewHolder.bindProduct(products[position])
+        viewHolder.bindProduct(products[position] , activity)
 
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         @SuppressLint("CheckResult")
-        fun bindProduct(product: Product) {
+        fun bindProduct(product: Product, activity: Activity) {
 
             itemView.product_name.text = product.name
             itemView.product_price.text = "${product.price.toString()} €"
             itemView.product_stock.text = "${product.stock.toString()} - Restant"
 
 
-            Picasso.get().load(product.image[0].filename).fit().into(itemView.product_image)
+            Picasso.get().load(product.image[0].url).fit().into(itemView.product_image)
 
-            Observable.create(ObservableOnSubscribe<MutableList<CartItem>> {
+            itemView.addToCart.setOnClickListener {
 
-                itemView.addToCart.setOnClickListener { view ->
+                val token = AuthManagement.getToken(activity)
+                val jwt = token?.let { JWT (it) }
 
-                    val item = CartItem(product)
+                var userId = jwt?.getClaim("id")?.asString().toString()
+                apiService =
+                    APIConfig.getRetrofitClient(itemView.context).create(APIService::class.java)
+                apiService.addToShoppingCart(userId, product.id, jwt.toString())
+                    .enqueue(object :
+                        Callback<ResponseBody> {
+                        @SuppressLint("RestrictedApi")
+                        override fun onResponse(
+                            call: Call<ResponseBody>,
+                            response: Response<ResponseBody>
+                        ) {
+                            Toast.makeText(
+                                itemView.rootView.context,
+                                product.name + " a bien été ajouté au panier",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            val mainActivity =
+                                ContextUtils.getActivity(itemView.context) as MainActivity
 
-                    ShoppingCart.addItem(item)
-                    //notify users
-                    Snackbar.make(
-                        (itemView.context as MainActivity).coordinator,
-                        "${product.name} added to your cart",
-                        Snackbar.LENGTH_LONG
-                    ).show()
+                        }
 
-                    it.onNext(ShoppingCart.getCart())
+                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                            Log.e("Error", t.message.toString())
+                            Toast.makeText(
+                                itemView.rootView.context,
+                                "Erreur: Redémarrer l'application",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
 
-                }
-
-                itemView.removeItem.setOnClickListener { view ->
-
-                    val item = CartItem(product)
-
-                    ShoppingCart.removeItem(item, itemView.context)
-
-                    Snackbar.make(
-                        (itemView.context as MainActivity).coordinator,
-                        "${product.name} removed from your cart",
-                        Snackbar.LENGTH_LONG
-                    ).show()
-                    it.onNext(ShoppingCart.getCart())
-
-                }
-
-
-            }).subscribe { cart ->
-
-                var quantity = 0
-
-                cart.forEach { cartItem ->
-
-                    quantity += cartItem.quantity
-                }
-
-                (itemView.context as MainActivity).cart_size.text = quantity.toString()
-//                Toast.makeText(itemView.context, "Cart size $quantity", Toast.LENGTH_SHORT).show()
-
-//            }
-//                Toast.makeText(itemView.context, "${product.name} added to your cart", Toast.LENGTH_SHORT).show()
-
+                    })
 
             }
+
+
+
+            itemView.removeItem.setOnClickListener {
+
+                val token = AuthManagement.getToken(activity)
+                val jwt = token?.let { JWT (it) }
+
+                var userId = jwt?.getClaim("id")?.asString().toString()
+
+                apiService = activity.let { APIConfig.getRetrofitClient(it).create(APIService::class.java) }!!
+
+                APIConfig.getRetrofitClient(itemView.context).create(APIService::class.java)
+                apiService.deleteAProductFromShoppingCart(
+                    userId,
+                    product.id,
+                    jwt.toString()
+                )
+                    .enqueue(object : Callback<ResponseBody> {
+                        @SuppressLint("RestrictedApi")
+                        override fun onResponse(
+                            call: Call<ResponseBody>,
+                            response: Response<ResponseBody>
+                        ) {
+                            Toast.makeText(
+                                itemView.context,
+                                "Le Produit a bien été retirer",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+
+                        }
+
+                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                            Log.e("Error", t.message.toString())
+                            Toast.makeText(itemView.context, "Error !", Toast.LENGTH_SHORT).show()
+                        }
+
+                    })
+            }
+
 
             var imgWhiteBorderHeart = itemView.findViewById<ImageView>(R.id.imgWhiteBorderHeart)
             var imgWhiteHeart = itemView.findViewById<ImageView>(R.id.imgWhiteHeart)
@@ -127,4 +169,5 @@ class ProductAdapter(var context: Context, var products: List<Product> = arrayLi
                 view.visibility =
                     if (view.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
         }
-    }}
+    }
+}

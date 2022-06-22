@@ -3,11 +3,11 @@ package com.example.squid1
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.squid.fragments.CartFragment
 import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
 import com.example.squid.R
+import com.example.squid1.Cart.ShoppingCartFragment
 import com.example.squid1.Login.LoginActivity
 import com.example.squid1.Search.SearchFragment
 import com.example.squid1.fragments.BlankFragment
@@ -29,13 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
-        cart_size.text = ShoppingCart.getShoppingCartSize().toString()
 
-        showCart.setOnClickListener {
-
-            startActivity(Intent(this, ShoppingCartActivity::class.java))
-        }
-
+        val cartFragment = ShoppingCartFragment()
         val bookmarkFragment = BookmarkFragment()
         val searchFragment = SearchFragment()
         val profileFragment = ProfileFragment()
@@ -43,13 +38,13 @@ class MainActivity : AppCompatActivity() {
 
        makeCurrentFragment(blankFragment)
 
-
         bottom_navigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.ic_home -> makeCurrentFragment(blankFragment)
                 R.id.ic_favorites -> makeCurrentFragment(bookmarkFragment)
                 R.id.ic_search -> makeCurrentFragment(searchFragment)
                 R.id.ic_user -> makeCurrentFragment(profileFragment)
+                R.id.ic_cart -> makeCurrentFragment(cartFragment)
             }
             true
         }
@@ -58,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.ic_home -> refreshCurrentFragment(blankFragment)
                 R.id.ic_favorites -> refreshCurrentFragment(bookmarkFragment)
                 R.id.ic_search -> refreshCurrentFragment(searchFragment)
+                R.id.ic_cart -> makeCurrentFragment(cartFragment)
             }
             true
         }

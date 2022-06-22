@@ -37,15 +37,18 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val token = activity?.let { AuthManagement.getToken(it) }
-        val jwt = token?.let { JWT (it) }
-        val userId = jwt?.getClaim("id")?.asString()
-        val userEmail = jwt?.getClaim("email")?.asString()
-        val UserAdmin = jwt?.getClaim("isAdmin")?.asString()
+//        val token = activity?.let { AuthManagement.getToken(it) }
+//        val jwt = token?.let { JWT (it) }
+//        val userId = jwt?.getClaim("id")?.asString()
+//        val userEmail = jwt?.getClaim("email")?.asString()
+//        val UserAdmin = jwt?.getClaim("isAdmin")?.asString()
 
+        var infoUser =  view.findViewById<Button>(R.id.infoUser)
+        infoUser.setOnClickListener {
 
+        }
 
-        var cpmmande = view.findViewById<Button>(R.id.contacts)
+        var commande = view.findViewById<Button>(R.id.commande)
         commande.setOnClickListener {
 
         }

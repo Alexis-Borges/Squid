@@ -1,6 +1,6 @@
 package com.example.squid1.Api
 
-data class Category(
+data class Image(
     val id: Int,
-    val name: String
+    val url: String
 )

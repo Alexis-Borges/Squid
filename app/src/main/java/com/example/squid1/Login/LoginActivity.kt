@@ -80,9 +80,6 @@ class LoginActivity : AppCompatActivity() {
                     if (response.code() == HTTP_OK) {
                         response.body()
                             ?.let { AuthManagement.saveToken(it.string(), this@LoginActivity) }
-                        val token = AuthManagement.getToken(this@LoginActivity)
-                        val jwt = token?.let { JWT (it) }
-                        val userId = jwt?.getClaim("id")?.asString()
 
                         Toast.makeText(
                             this@LoginActivity,

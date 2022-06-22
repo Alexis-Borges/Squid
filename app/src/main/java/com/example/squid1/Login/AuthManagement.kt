@@ -1,5 +1,6 @@
 package com.example.squid1.Login
 
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.datastore.preferences.core.clear
@@ -12,11 +13,35 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class AuthManagement  {
+class AuthManagement(context: Context?, dataStoreName: String) {
+
+    val name = dataStoreName
+    var jwtToken = ""
+    var userId = ""
+    var userEmail = ""
+    private val dataStore = context?.createDataStore(name = name)
+
+    init {
+        runBlocking {
+            launch {
+                var jwt = readfromLocalStorage()?.let { JWT(it) }
+                jwtToken = jwt.toString()
+                userId = jwt?.getClaim("id")?.asString().toString()
+                userEmail = jwt?.getClaim("email")?.asString().toString()
+            }
+        }
+    }
+
+    suspend fun readfromLocalStorage(): String? {
+        val dataStoreKey = preferencesKey<String>(name)
+        val preferences = dataStore?.data?.first()
+        return preferences?.get(dataStoreKey)
+    }
+
     companion object {
 
 
-        fun getToken(activity: FragmentActivity): String? {
+        fun getToken(activity: Activity): String? {
             val prefs = activity.getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
             return prefs.getString("token", "noToken")
         }

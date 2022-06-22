@@ -29,7 +29,7 @@ class BookmarkFragment : Fragment() {
 
         binding.recyclerViewBookmark.apply {
             layoutManager = GridLayoutManager(context, 2)
-            adapter= context?.let { ProductAdapter(it, listProductFavourite) }
+//            adapter= context?.let { ProductAdapter(it, it, listProductFavourite) }
         }
 
         return root
