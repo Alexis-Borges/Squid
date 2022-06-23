@@ -32,7 +32,11 @@ import retrofit2.Response
 
 private lateinit var apiService: APIService
 
-class ProductAdapter(var context: Context, act: Activity, var products: List<Product> = arrayListOf()) :
+class ProductAdapter(
+    var context: Context,
+    act: Activity,
+    var products: List<Product> = arrayListOf()
+) :
     RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
     private val activity = act
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
@@ -46,7 +50,7 @@ class ProductAdapter(var context: Context, act: Activity, var products: List<Pro
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        viewHolder.bindProduct(products[position] , activity)
+        viewHolder.bindProduct(products[position], activity)
 
     }
 
@@ -59,13 +63,14 @@ class ProductAdapter(var context: Context, act: Activity, var products: List<Pro
             itemView.product_price.text = "${product.price.toString()} €"
             itemView.product_stock.text = "${product.stock.toString()} - Restant"
 
+            var imgWhiteBorderHeart = itemView.findViewById<ImageView>(R.id.imgWhiteBorderHeart)
 
             Picasso.get().load(product.image[0].url).fit().into(itemView.product_image)
 
             itemView.addToCart.setOnClickListener {
 
                 val token = AuthManagement.getToken(activity)
-                val jwt = token?.let { JWT (it) }
+                val jwt = token?.let { JWT(it) }
 
                 var userId = jwt?.getClaim("id")?.asString().toString()
                 apiService =
@@ -101,16 +106,16 @@ class ProductAdapter(var context: Context, act: Activity, var products: List<Pro
 
             }
 
-
-
             itemView.removeItem.setOnClickListener {
 
                 val token = AuthManagement.getToken(activity)
-                val jwt = token?.let { JWT (it) }
+                val jwt = token?.let { JWT(it) }
 
                 var userId = jwt?.getClaim("id")?.asString().toString()
 
-                apiService = activity.let { APIConfig.getRetrofitClient(it).create(APIService::class.java) }!!
+                apiService = activity.let {
+                    APIConfig.getRetrofitClient(it).create(APIService::class.java)
+                }!!
 
                 APIConfig.getRetrofitClient(itemView.context).create(APIService::class.java)
                 apiService.deleteAProductFromShoppingCart(
@@ -141,33 +146,46 @@ class ProductAdapter(var context: Context, act: Activity, var products: List<Pro
                     })
             }
 
+            itemView.imgWhiteBorderHeart.setOnClickListener {
 
-            var imgWhiteBorderHeart = itemView.findViewById<ImageView>(R.id.imgWhiteBorderHeart)
-            var imgWhiteHeart = itemView.findViewById<ImageView>(R.id.imgWhiteHeart)
+                val token = AuthManagement.getToken(activity)
+                val jwt = token?.let { JWT(it) }
 
-            imgWhiteHeart.visibility = View.INVISIBLE
+                var userId = jwt?.getClaim("id")?.asString().toString()
 
-            val imgHeart = arrayOf(imgWhiteBorderHeart, imgWhiteHeart)
-            imgWhiteBorderHeart.setOnClickListener {
-                showHide(imgHeart)
-                listProductFavourite.add(product)
+                apiService = activity.let {
+                    APIConfig.getRetrofitClient(it).create(APIService::class.java)
+                }!!
+
+                APIConfig.getRetrofitClient(itemView.context).create(APIService::class.java)
+                apiService.addToFavList(
+                    userId,
+                    product.id,
+                    jwt.toString()
+                )
+                    .enqueue(object : Callback<ResponseBody> {
+                        @SuppressLint("RestrictedApi")
+                        override fun onResponse(
+                            call: Call<ResponseBody>,
+                            response: Response<ResponseBody>
+                        ) {
+                            Toast.makeText(
+                                itemView.context,
+                                "Ce Produit a bien été Ajouter a vos Favoris",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+
+                        }
+
+                        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                            Log.e("Error", t.message.toString())
+                            Toast.makeText(itemView.context, "Error !", Toast.LENGTH_SHORT).show()
+                        }
+
+                    })
             }
-            imgWhiteHeart.setOnClickListener {
-                showHide(imgHeart)
-                listProductFavourite.remove(product)
-            }
 
-            if (product in listProductFavourite) {
-                showHide(imgHeart)
-            }
-
-        }
-
-        // Manage the toggle event on heart's article click
-        fun showHide(imgViews: Array<ImageView>) {
-            for (view in imgViews)
-                view.visibility =
-                    if (view.visibility == View.VISIBLE) View.INVISIBLE else View.VISIBLE
         }
     }
 }

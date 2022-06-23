@@ -9,22 +9,22 @@
     app:cardElevation="1.5dp"
     android:layout_margin="2dp"
     app:cardBackgroundColor="@android:color/white"
-    app:cardCornerRadius="2dp"
+    app:cardCornerRadius="8dp"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="190dp"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:weightSum="1.5"
-        android:layout_height="match_parent">
+        android:weightSum="1.5">
 
 
         <ImageView
             android:id="@+id/product_image"
-            android:layout_width="224dp"
-            android:layout_height="192dp"
+            android:layout_width="207dp"
+            android:layout_height="match_parent"
             android:layout_weight=".5"
             android:scaleType="fitXY" />
 
@@ -32,7 +32,7 @@
         <LinearLayout
             android:layout_width="116dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="6dp"
             android:layout_marginRight="5dp"
             android:layout_weight=".5"
             android:gravity="center_vertical"
@@ -45,17 +45,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
-                android:textSize="19sp" />
-
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/product_price"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColor="@android:color/holo_red_light"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textColor="@color/red_all"
+                android:textSize="22sp" />
 
 
         </LinearLayout>
@@ -65,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginRight="0dp"
             android:background="@drawable/round_background"
             android:gravity="center_vertical"
@@ -80,7 +78,7 @@
             android:layout_height="34dp"
             android:layout_marginRight="20dp"
             android:background="@color/white"
-            android:src="@drawable/ic_remove_shopping_cart"
+            android:src="@drawable/ic_cart_minus"
             card_view:ignore="SpeakableTextPresentCheck"
             card_view:targetApi="o" />
 

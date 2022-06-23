@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.stripe:stripe-core:20.5.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/cf53c0197959d2a493b7033f20b71b99/transformed/jetified-stripe-core-20.5.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cf53c0197959d2a493b7033f20b71b99/transformed/jetified-stripe-core-20.5.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cf53c0197959d2a493b7033f20b71b99/transformed/jetified-stripe-core-20.5.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.stripe/stripe-core/20.5.0/47792356acc5d5ed799e8aae6dbbfb77eba5751d/stripe-core-20.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

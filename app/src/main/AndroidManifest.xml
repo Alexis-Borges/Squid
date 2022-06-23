@@ -20,8 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.squid1.Login.LoginActivity" />
+
         <activity android:name="com.example.squid1.Login.RegisterActivity" />
+        <activity android:name="com.example.squid1.Login.LoginActivity" />
+        <activity android:name="com.example.squid1.Cart.CheckoutActivity" />
         <activity android:name="com.example.squid1.Search.ResultSearchActivity" />
         <activity
             android:name="com.example.squid1.MainActivity"

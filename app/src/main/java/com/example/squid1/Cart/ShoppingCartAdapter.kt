@@ -27,15 +27,16 @@ import retrofit2.Response
 
 private lateinit var apiService: APIService
 
-class ShoppingCartAdapter(var context: Context, var cartItems: List<Cartitem>, act: Activity) :
+class ShoppingCartAdapter(var context: Context, var cartItems: List<Cartitem>, act: Activity , shoppingCartFragment: ShoppingCartFragment) :
+
     RecyclerView.Adapter<ShoppingCartAdapter.ViewHolder>() {
     private val activity = act
-
+    private var shoppingCartFragment = shoppingCartFragment
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
 
         val layout = LayoutInflater.from(context).inflate(R.layout.cart_list_item, parent, false)
 
-        return ViewHolder(layout)
+        return ViewHolder(layout, shoppingCartFragment)
     }
 
     override fun getItemCount(): Int = cartItems.size
@@ -46,7 +47,7 @@ class ShoppingCartAdapter(var context: Context, var cartItems: List<Cartitem>, a
     }
 
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View , val shoppingCartFragment: ShoppingCartFragment) : RecyclerView.ViewHolder(view) {
 
         fun bindItem(cartItem: Cartitem, activity: Activity) {
 
@@ -81,10 +82,11 @@ class ShoppingCartAdapter(var context: Context, var cartItems: List<Cartitem>, a
                         ) {
                             Toast.makeText(
                                 itemView.context,
-                                "Un Exemplaire de l'article a bien été retirer",
+                                "Un Exemplaire de l'article a bien été retiré",
                                 Toast.LENGTH_SHORT
                             )
                                 .show()
+                            shoppingCartFragment.refreshFragment(shoppingCartFragment)
 
                         }
 

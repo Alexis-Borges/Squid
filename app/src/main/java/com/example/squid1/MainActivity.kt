@@ -3,15 +3,11 @@ package com.example.squid1
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import android.content.Intent
-import androidx.lifecycle.Observer
-import androidx.lifecycle.asLiveData
 import com.example.squid.R
 import com.example.squid1.Cart.ShoppingCartFragment
-import com.example.squid1.Login.LoginActivity
+import com.example.squid1.Fav.FavFragment
 import com.example.squid1.Search.SearchFragment
 import com.example.squid1.fragments.BlankFragment
-import com.example.squid1.fragments.BookmarkFragment
 import com.example.squid1.fragments.ProfileFragment
 import io.paperdb.Paper
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val cartFragment = ShoppingCartFragment()
-        val bookmarkFragment = BookmarkFragment()
+        val favFragment = FavFragment()
         val searchFragment = SearchFragment()
         val profileFragment = ProfileFragment()
         val blankFragment = BlankFragment()
@@ -41,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.ic_home -> makeCurrentFragment(blankFragment)
-                R.id.ic_favorites -> makeCurrentFragment(bookmarkFragment)
+                R.id.ic_favorites -> makeCurrentFragment(favFragment)
                 R.id.ic_search -> makeCurrentFragment(searchFragment)
                 R.id.ic_user -> makeCurrentFragment(profileFragment)
                 R.id.ic_cart -> makeCurrentFragment(cartFragment)
@@ -51,9 +47,9 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnItemReselectedListener {
             when (it.itemId) {
                 R.id.ic_home -> refreshCurrentFragment(blankFragment)
-                R.id.ic_favorites -> refreshCurrentFragment(bookmarkFragment)
+                R.id.ic_favorites -> refreshCurrentFragment(favFragment)
                 R.id.ic_search -> refreshCurrentFragment(searchFragment)
-                R.id.ic_cart -> makeCurrentFragment(cartFragment)
+                R.id.ic_cart -> refreshCurrentFragment(cartFragment)
             }
             true
         }

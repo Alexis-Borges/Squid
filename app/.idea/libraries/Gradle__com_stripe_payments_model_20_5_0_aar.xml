@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.stripe:payments-model:20.5.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/eb7f7a3c8e510b5da70c7131ccc7071a/transformed/jetified-payments-model-20.5.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/eb7f7a3c8e510b5da70c7131ccc7071a/transformed/jetified-payments-model-20.5.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/eb7f7a3c8e510b5da70c7131ccc7071a/transformed/jetified-payments-model-20.5.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.stripe/payments-model/20.5.0/e7dacfc3200b258a8c65d72e0b03dec04e411679/payments-model-20.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

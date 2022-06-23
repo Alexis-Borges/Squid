@@ -2,7 +2,6 @@ package com.example.squid1.Cart
 
 import android.os.Bundle
 import com.example.squid.R
-import kotlinx.android.synthetic.main.fragment_blank.*
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.util.Log
@@ -20,7 +19,6 @@ import com.example.squid1.Api.APIConfig
 import com.example.squid1.Api.APIService
 import com.example.squid1.Api.Cartitem
 import com.example.squid1.Login.AuthManagement
-import kotlinx.android.synthetic.main.fragment_cart.*
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,7 +31,6 @@ class ShoppingCartFragment : Fragment() {
     private var _binding: FragmentCartBinding? = null
     private val binding get() = _binding!!
     lateinit var cartView: RecyclerView
-    private lateinit var removeItemCart: ImageButton
     private lateinit var checkoutButton: Button
     private lateinit var totalCartPrice: TextView
     private var panierPrice = 0
@@ -50,11 +47,11 @@ class ShoppingCartFragment : Fragment() {
         cartView = view.findViewById(R.id.shopping_cart_recyclerView) as RecyclerView
         totalCartPrice = view.findViewById(R.id.totalCartPrice) as TextView
         checkoutButton = view.findViewById(R.id.checkoutButton)
-//        checkoutButton.setOnClickListener {
-//            val intent = Intent(activity, ValidateShopping::class.java)
-//            intent.putExtra("panierPrice", panierPrice)
-//            startActivityForResult(intent, 1) //startActivityForResult(intent, 1)
-//        }
+        checkoutButton.setOnClickListener {
+            val intent = Intent(activity, CheckoutActivity::class.java)
+            intent.putExtra("panierPrice", panierPrice)
+            startActivityForResult(intent, 1) //startActivityForResult(intent, 1)
+        }
         primaryFunction()
         return view
     }
@@ -64,7 +61,7 @@ class ShoppingCartFragment : Fragment() {
 
         if (requestCode == 1){
             if(resultCode == RESULT_OK){ //l'achat est bien passé
-                refreshFragment()
+                refreshFragment(this)
             }
         }
     }
@@ -75,8 +72,9 @@ class ShoppingCartFragment : Fragment() {
         }
     }
 
-    private fun refreshFragment(){
-        fragmentManager?.beginTransaction()?.detach(this)?.commit()
+    fun refreshFragment(shoppingCartFragment: ShoppingCartFragment){
+        fragmentManager?.beginTransaction()?.detach(shoppingCartFragment)?.commit()
+        fragmentManager?.beginTransaction()?.attach(shoppingCartFragment)?.commit()
     }
 
     private lateinit var shoppingCartAdapter: ShoppingCartAdapter
@@ -115,7 +113,7 @@ class ShoppingCartFragment : Fragment() {
                 }
                 totalCartPrice.text = totalPrice.toString() + "€"
 
-                shoppingCartAdapter = activity?.let { ShoppingCartAdapter(it, cartitem, it) }!!
+                shoppingCartAdapter = activity?.let { ShoppingCartAdapter(it, cartitem, it, this@ShoppingCartFragment) }!!
 
                 cartView.adapter = shoppingCartAdapter
 
