@@ -1,13 +1,15 @@
 package com.example.squid1
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.squid.R
 import com.example.squid1.Cart.ShoppingCartFragment
 import com.example.squid1.Fav.FavFragment
 import com.example.squid1.Search.SearchFragment
-import com.example.squid1.fragments.BlankFragment
+import com.example.squid1.fragments.ContactFragment
+import com.example.squid1.fragments.HomeFragment
 import com.example.squid1.fragments.ProfileFragment
 import io.paperdb.Paper
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,13 +32,14 @@ class MainActivity : AppCompatActivity() {
         val favFragment = FavFragment()
         val searchFragment = SearchFragment()
         val profileFragment = ProfileFragment()
-        val blankFragment = BlankFragment()
+        val homeFragment = HomeFragment()
+        val contactFragment = ContactFragment()
 
-       makeCurrentFragment(blankFragment)
+       makeCurrentFragment(homeFragment)
 
         bottom_navigation.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.ic_home -> makeCurrentFragment(blankFragment)
+                R.id.ic_home -> makeCurrentFragment(homeFragment)
                 R.id.ic_favorites -> makeCurrentFragment(favFragment)
                 R.id.ic_search -> makeCurrentFragment(searchFragment)
                 R.id.ic_user -> makeCurrentFragment(profileFragment)
@@ -46,13 +49,14 @@ class MainActivity : AppCompatActivity() {
         }
         bottom_navigation.setOnItemReselectedListener {
             when (it.itemId) {
-                R.id.ic_home -> refreshCurrentFragment(blankFragment)
+                R.id.ic_home -> refreshCurrentFragment(homeFragment)
                 R.id.ic_favorites -> refreshCurrentFragment(favFragment)
                 R.id.ic_search -> refreshCurrentFragment(searchFragment)
                 R.id.ic_cart -> refreshCurrentFragment(cartFragment)
             }
             true
         }
+
     }
 
     private fun makeCurrentFragment(fragment: Fragment) =

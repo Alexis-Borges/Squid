@@ -55,6 +55,19 @@ interface APIService {
         @Header("token") Authentication: String
     ): Call<JsonObject>
 
+    //Orders
+    @POST("confirmOrder")
+    fun ConfirmedOrder(
+        @Query("idCustomer") userId: String,
+        @Header("token") Authentication: String
+    ): Call<ResponseBody>
+
+    @GET("order/byCustomer?idCustomer")
+    fun OrdersbyCustumers(
+        @Query("idCustomer") userId: String,
+        @Header("token") Authentication: String
+    ): Call<ResponseBody>
+
     //Fav
     @GET("favorites")
     fun getUserFav(

@@ -3,6 +3,7 @@ package com.example.squid1.Cart
 import android.content.ContentValues.TAG
 import android.util.Log
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -51,7 +52,6 @@ class CheckoutActivity : AppCompatActivity() {
         payButton = findViewById(R.id.pay_button)
         payButton.setOnClickListener(::onPayClicked)
         payButton.isEnabled = false
-
         paymentSheet = PaymentSheet(this, ::onPaymentSheetResult)
 
         fetchPaymentIntent()
@@ -60,12 +60,12 @@ class CheckoutActivity : AppCompatActivity() {
     private fun fetchPaymentIntent() {
         apiService = this.let { APIConfig.getRetrofitClient(it).create(APIService::class.java) }!!
         val token = AuthManagement.getToken(this)
-        val jwt = token?.let { JWT (it) }
+        val jwt = token?.let { JWT(it) }
 
         var userId = jwt?.getClaim("id")?.asString().toString()
 
         apiService.pay(userId, jwt.toString()).enqueue(object :
-            Callback<JsonObject>{
+            Callback<JsonObject> {
             override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                 if (response.code() == HTTP_OK) {
                     pay_button.isClickable = true
@@ -95,14 +95,48 @@ class CheckoutActivity : AppCompatActivity() {
     private fun onPaymentSheetResult(paymentResult: PaymentSheetResult) {
         when (paymentResult) {
             is PaymentSheetResult.Completed -> {
+                apiService =
+                    this.let { APIConfig.getRetrofitClient(it).create(APIService::class.java) }!!
+                val token = AuthManagement.getToken(this)
+                val jwt = token?.let { JWT(it) }
 
+                var userId = jwt?.getClaim("id")?.asString().toString()
+
+                apiService.ConfirmedOrder(userId, jwt.toString()).enqueue(object :
+                    Callback<ResponseBody> {
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>
+                    ) {
+                        if (response.code() == HTTP_OK) {
+                            Toast.makeText(applicationContext, "Achat Validé, Votre Panier a été Vidé", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        Log.e("Error", t.message.toString())
+                    }
+                })
             }
             is PaymentSheetResult.Canceled -> {
-
+                Toast.makeText(applicationContext, "Achat annuler", Toast.LENGTH_SHORT).show()
             }
             is PaymentSheetResult.Failed -> {
+                Toast.makeText(applicationContext, "Echec", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
 
             }
         }
+
+        return super.onOptionsItemSelected(item)
     }
 }

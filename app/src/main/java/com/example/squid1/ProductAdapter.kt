@@ -63,6 +63,7 @@ class ProductAdapter(
             itemView.product_price.text = "${product.price.toString()} €"
             itemView.product_stock.text = "${product.stock.toString()} - Restant"
 
+
             var imgWhiteBorderHeart = itemView.findViewById<ImageView>(R.id.imgWhiteBorderHeart)
 
             Picasso.get().load(product.image[0].url).fit().into(itemView.product_image)
@@ -74,7 +75,8 @@ class ProductAdapter(
 
                 var userId = jwt?.getClaim("id")?.asString().toString()
                 apiService =
-                    APIConfig.getRetrofitClient(itemView.context).create(APIService::class.java)
+                    APIConfig.getRetrofitClient(itemView.context)
+                        .create(APIService::class.java)
                 apiService.addToShoppingCart(userId, product.id, jwt.toString())
                     .enqueue(object :
                         Callback<ResponseBody> {
@@ -131,7 +133,7 @@ class ProductAdapter(
                         ) {
                             Toast.makeText(
                                 itemView.context,
-                                "Le Produit a bien été retirer",
+                                "Le Produit a bien été retiré",
                                 Toast.LENGTH_SHORT
                             )
                                 .show()
@@ -140,7 +142,8 @@ class ProductAdapter(
 
                         override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                             Log.e("Error", t.message.toString())
-                            Toast.makeText(itemView.context, "Error !", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(itemView.context, "Error !", Toast.LENGTH_SHORT)
+                                .show()
                         }
 
                     })
@@ -171,7 +174,7 @@ class ProductAdapter(
                         ) {
                             Toast.makeText(
                                 itemView.context,
-                                "Ce Produit a bien été Ajouter a vos Favoris",
+                                "Ce Produit a bien été ajouté a vos Favoris",
                                 Toast.LENGTH_SHORT
                             )
                                 .show()
@@ -180,12 +183,52 @@ class ProductAdapter(
 
                         override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                             Log.e("Error", t.message.toString())
-                            Toast.makeText(itemView.context, "Error !", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(itemView.context, "Error !", Toast.LENGTH_SHORT)
+                                .show()
                         }
 
                     })
             }
 
+            var wichImg: Int
+            wichImg = 2
+            itemView.product_image.setOnClickListener {
+                when (wichImg) {
+                    1 -> {
+                        Picasso.get().load(product.image[0].url).into(itemView.product_image)
+                        wichImg = 2
+                    }
+                    2 -> {
+                        if (product.image.size >= 2) {
+                            Picasso.get().load(product.image[1].url).into(itemView.product_image)
+                            wichImg = 3
+                        } else {
+                            Picasso.get().load(product.image[0].url).into(itemView.product_image)
+                            wichImg = 2
+                        }
+                    }
+                    3 -> {
+                        if (product.image.size >= 3) {
+                            Picasso.get().load(product.image[2].url).into(itemView.product_image)
+                            wichImg = 4
+                        } else {
+                            Picasso.get().load(product.image[0].url).into(itemView.product_image)
+                            wichImg = 2
+                        }
+                    }
+                    4 -> {
+                        if (product.image.size >= 4) {
+                            Picasso.get().load(product.image[3].url).into(itemView.product_image)
+                            wichImg = 1
+                        } else {
+                            Picasso.get().load(product.image[0].url).into(itemView.product_image)
+                            wichImg = 2
+                        }
+                    }
+                }
+            }
+
         }
+
     }
 }

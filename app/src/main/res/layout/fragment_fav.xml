@@ -33,13 +33,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fav_recyclerView"
         android:layout_width="390dp"
-        android:layout_height="594dp"
+        android:layout_height="681dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        tools:listitem="@layout/product_row_item" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

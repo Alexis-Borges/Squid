@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,15 +49,17 @@ class ProfileFragment : Fragment() {
 
         }
 
-        var commande = view.findViewById<Button>(R.id.commande)
-        commande.setOnClickListener {
-
-        }
-
-        var contact = view.findViewById<Button>(R.id.contacts)
-        contact.setOnClickListener {
-
-        }
+//        var commande = view.findViewById<Button>(R.id.commande)
+//        commande.setOnClickListener {
+//            val intent = Intent(this, ::class.java)
+//            startActivityForResult(intent, 1)
+//        }
+//
+//        var contact = view.findViewById<Button>(R.id.contacts)
+//        contact.setOnClickListener {
+//            val intent = Intent(this, ProfileFragment::class.java)
+//            startActivityForResult(intent, 1)
+//        }
 
         var logout = view.findViewById<Button>(R.id.logout)
         logout.setOnClickListener {

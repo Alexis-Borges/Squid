@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_blank.*
 import retrofit2.Call
 import retrofit2.Response
 
-class BlankFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     private lateinit var apiService: APIService
     private lateinit var productAdapter: ProductAdapter
@@ -26,10 +26,10 @@ class BlankFragment : Fragment() {
     private var products = listOf<Product>()
 
     companion object {
-        fun newInstance() = BlankFragment()
+        fun newInstance() = HomeFragment()
     }
 
-    private lateinit var viewModel: BlankViewModel
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +41,7 @@ class BlankFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(BlankViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         getProducts()
     }
 
