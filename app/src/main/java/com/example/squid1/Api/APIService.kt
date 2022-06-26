@@ -2,15 +2,16 @@ package com.example.squid1.Api
 
 
 import android.util.JsonToken
+import androidx.datastore.preferences.protobuf.ListValue
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 
-
+//Appel et Route utilisé dans l'application pour communiquer avec L'Api
 interface APIService {
-
+    //Produits
     @Headers("Content-Type: application/json", "Accept: application/json")
     @GET("/articles/trending")
     fun getProducts(
@@ -26,6 +27,7 @@ interface APIService {
     fun getProductsByCategory(
         @Query("id") id: Int
     ): Call<List<Product>>
+    //Produits
 
     //Cart
     @POST("carts/increment")
@@ -47,13 +49,15 @@ interface APIService {
         @Query("idArticle") id: Int,
         @Header("token") Authentication: String
     ): Call<ResponseBody>
+    //Cart
 
-    //payments
+    //Paiements
     @POST("create-payment-intent")
     fun pay(
         @Query("idCustomer") userId: String,
         @Header("token") Authentication: String
     ): Call<JsonObject>
+    //Paiements
 
     //Orders
     @POST("confirmOrder")
@@ -62,11 +66,12 @@ interface APIService {
         @Header("token") Authentication: String
     ): Call<ResponseBody>
 
-    @GET("order/byCustomer?idCustomer")
+    @GET("order/byCustomer")
     fun OrdersbyCustumers(
         @Query("idCustomer") userId: String,
         @Header("token") Authentication: String
     ): Call<ResponseBody>
+    //Orders
 
     //Fav
     @GET("favorites")
@@ -80,6 +85,12 @@ interface APIService {
         @Query("idCustomer") userId: String,
         @Query("idArticle") id: Int,
         @Header("token") Authentication: String
+    ): Call<ResponseBody>
+    //Fav
+    //contact
+    @POST("contact")
+    fun contactinfo(
+        @Body userContact: UserContact,
     ): Call<ResponseBody>
 }
 

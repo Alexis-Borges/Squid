@@ -1,16 +1,15 @@
 package com.example.squid1
 
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.squid.R
 import com.example.squid1.Cart.ShoppingCartFragment
 import com.example.squid1.Fav.FavFragment
 import com.example.squid1.Search.SearchFragment
-import com.example.squid1.fragments.ContactFragment
+import com.example.squid1.Profile.ContactActivity
 import com.example.squid1.fragments.HomeFragment
-import com.example.squid1.fragments.ProfileFragment
+import com.example.squid1.Profile.ProfileFragment
 import io.paperdb.Paper
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_cart.*
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         val searchFragment = SearchFragment()
         val profileFragment = ProfileFragment()
         val homeFragment = HomeFragment()
-        val contactFragment = ContactFragment()
+        val contactActivity = ContactActivity()
 
        makeCurrentFragment(homeFragment)
 

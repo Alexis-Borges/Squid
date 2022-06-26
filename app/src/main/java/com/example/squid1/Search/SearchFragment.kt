@@ -74,7 +74,7 @@ class SearchFragment : Fragment() {
 
         binding.listView.setOnItemClickListener { parent, view, position, id ->
             for (value in category) {
-//                if (value.name == valueAdapter.getItem(position)) categoryId = value.category
+                if (value.name == valueAdapter.getItem(position)) categoryId = value.id
             }
             Log.d("id category", categoryId.toString())
 
@@ -115,11 +115,6 @@ class SearchFragment : Fragment() {
                     listValue.add(cate.name)
 
                 }
-//                   productAdapter = activity?.let { ProductAdapter(it, products = ) }!!
-//
-//                   products_recyclerview.adapter = productAdapter
-//
-//                   productAdapter.notifyDataSetChanged()
 
             }
 

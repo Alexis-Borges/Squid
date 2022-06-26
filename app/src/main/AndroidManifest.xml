@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.squid">
+    package="com.example.squid" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> //permission pour l'application d'utiliser internet
 
     <application
         android:allowBackup="true"
@@ -10,10 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/fichier_12x_3"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/Theme.AppCompat.NoActionBar" >
+
         <activity
             android:name="com.example.squid1.Splash"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +26,9 @@
         <activity android:name="com.example.squid1.Login.LoginActivity" />
         <activity android:name="com.example.squid1.Cart.CheckoutActivity" />
         <activity android:name="com.example.squid1.Search.ResultSearchActivity" />
+        <activity android:name="com.example.squid1.Profile.infoUserActivity" />
+        <activity android:name="com.example.squid1.Profile.ContactActivity" />
+
         <activity
             android:name="com.example.squid1.MainActivity"
             android:exported="true" />
@@ -32,7 +36,6 @@
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
-
     </application>
 
 </manifest>

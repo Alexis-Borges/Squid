@@ -28,13 +28,13 @@ import retrofit2.Response
 private lateinit var apiService: APIService
 
 class ShoppingCartAdapter(var context: Context, var cartItems: List<Cartitem>, act: Activity , shoppingCartFragment: ShoppingCartFragment) :
-
+    //Adapater, permettant de manipuler les données Api plus simplement dans une page
     RecyclerView.Adapter<ShoppingCartAdapter.ViewHolder>() {
     private val activity = act
     private var shoppingCartFragment = shoppingCartFragment
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
 
-        val layout = LayoutInflater.from(context).inflate(R.layout.cart_list_item, parent, false)
+        val layout = LayoutInflater.from(context).inflate(R.layout.cart_list_item, parent, false) //recuperation de la page ou l'on souhaite injecter les informations
 
         return ViewHolder(layout, shoppingCartFragment)
     }
@@ -48,7 +48,7 @@ class ShoppingCartAdapter(var context: Context, var cartItems: List<Cartitem>, a
 
 
     class ViewHolder(view: View , val shoppingCartFragment: ShoppingCartFragment) : RecyclerView.ViewHolder(view) {
-
+    //Agencement des informations afficher a partir de l'api sur la page dynamique (recuperer l'url de l'image et l'injecter dans notre xml)
         fun bindItem(cartItem: Cartitem, activity: Activity) {
 
             Picasso.get().load(cartItem.article.images[0].url).fit().into(itemView.product_image)
@@ -60,16 +60,17 @@ class ShoppingCartAdapter(var context: Context, var cartItems: List<Cartitem>, a
             itemView.product_quantity.text = cartItem.quantity.toString()
 
             itemView.removeItemCart.setOnClickListener { view ->
-
+                //Evenement onClick, lorsque l'utilisateur souhaite appuyer sur le bouton, le code ci-dessous seras executer
                 apiService = activity.let { APIConfig.getRetrofitClient(it).create(APIService::class.java) }!!
                 val token = AuthManagement.getToken(activity)
                 val jwt = token?.let { JWT(it) }
 
-                var userId = jwt?.getClaim("id")?.asString().toString()
+                var userId = jwt?.getClaim("id")?.asString().toString() //recuperation de l'id user pour savoir a quel user souhaite suprimer un objet de son panier
 
                 APIConfig.getRetrofitClient(itemView.context).create(APIService::class.java)
 
-                apiService.deleteAProductFromShoppingCart(
+                apiService.deleteAProductFromShoppingCart( //execution de l'Api
+                    // (en parametre le userId, l'id de l'article que l'on souhaite supprimer ainsi que le jwt pour savoir s'il est connecter pour pouvoir modfier son panier.)
                     userId,
                     cartItem.article.id,
                     jwt.toString()
@@ -80,7 +81,7 @@ class ShoppingCartAdapter(var context: Context, var cartItems: List<Cartitem>, a
                             call: Call<ResponseBody>,
                             response: Response<ResponseBody>
                         ) {
-                            Toast.makeText(
+                            Toast.makeText(//reception d'une réponse 200, affichage du message
                                 itemView.context,
                                 "Un Exemplaire de l'article a bien été retiré",
                                 Toast.LENGTH_SHORT

@@ -10,11 +10,11 @@
     <TextView
         android:id="@+id/textView3"
         style="@style/Widget.AppCompat.TextView"
-        android:layout_width="174dp"
-        android:layout_height="54dp"
+        android:layout_width="155dp"
+        android:layout_height="53dp"
         android:layout_marginBottom="416dp"
         android:fontFamily="casual"
-        android:text="PROFILE"
+        android:text="PROFIL"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="#FFF"
         android:textSize="45dp"
@@ -112,7 +112,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 

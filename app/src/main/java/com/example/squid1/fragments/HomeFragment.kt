@@ -14,7 +14,7 @@ import com.example.squid1.Api.APIConfig
 import com.example.squid1.Api.APIService
 import com.example.squid1.Api.Product
 import com.example.squid1.ProductAdapter
-import kotlinx.android.synthetic.main.fragment_blank.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_blank, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
 
     }
 

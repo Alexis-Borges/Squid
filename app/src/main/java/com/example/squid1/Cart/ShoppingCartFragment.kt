@@ -26,7 +26,7 @@ import retrofit2.Response
 
 
 class ShoppingCartFragment : Fragment() {
-
+    //Code du fragment panier qui va permettre d'afficher la liste d'item dans le panier dynamiquement par utilisateur
     private lateinit var apiService: APIService
     private var _binding: FragmentCartBinding? = null
     private val binding get() = _binding!!
@@ -47,7 +47,7 @@ class ShoppingCartFragment : Fragment() {
         cartView = view.findViewById(R.id.shopping_cart_recyclerView) as RecyclerView
         totalCartPrice = view.findViewById(R.id.totalCartPrice) as TextView
         checkoutButton = view.findViewById(R.id.checkoutButton)
-        checkoutButton.setOnClickListener {
+        checkoutButton.setOnClickListener { //validation du panier par l'utilisateur on le redirige vers la page paiement avec le prix de sont panier final a regler
             val intent = Intent(activity, CheckoutActivity::class.java)
             intent.putExtra("panierPrice", panierPrice)
             startActivityForResult(intent, 1) //startActivityForResult(intent, 1)

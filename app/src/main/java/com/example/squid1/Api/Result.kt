@@ -1,4 +1,4 @@
-package com.example.squid1
+package com.example.squid1.Api
 
 import com.example.squid1.Api.Product
 import com.google.gson.annotations.SerializedName

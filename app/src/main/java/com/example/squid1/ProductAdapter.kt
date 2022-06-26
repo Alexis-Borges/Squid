@@ -16,7 +16,6 @@ import com.example.squid.R
 import com.example.squid1.Api.APIConfig
 import com.example.squid1.Api.APIService
 import com.example.squid1.Api.Product
-import com.example.squid1.Api.listProductFavourite
 import com.example.squid1.Login.AuthManagement
 import com.google.android.material.internal.ContextUtils
 import com.squareup.picasso.Picasso

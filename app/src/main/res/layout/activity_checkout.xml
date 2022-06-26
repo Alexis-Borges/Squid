@@ -8,13 +8,24 @@
     tools:context="com.example.squid1.Cart.CheckoutActivity"
     tools:showIn="@layout/activity_checkout">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fichier_12x_3"
+        android:layout_marginTop="300dp"
+        app:layout_constraintStart_toStartOf="@id/logo"
+        app:layout_constraintTop_toTopOf="@id/logo" />
+
     <Button
         android:id="@+id/pay_button"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:text="Pay now With your Credit Card 💳"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="75dp"
+        android:text="Pay now  💳"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

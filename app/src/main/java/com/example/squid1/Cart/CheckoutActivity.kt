@@ -1,36 +1,33 @@
 package com.example.squid1.Cart
 
-import android.content.ContentValues.TAG
-import android.util.Log
+
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.auth0.android.jwt.JWT
 import com.example.squid.R
 import com.example.squid1.Api.APIConfig
 import com.example.squid1.Api.APIService
-import com.example.squid1.Api.Cartitem
 import com.example.squid1.Login.AuthManagement
+import com.example.squid1.fragments.HomeFragment
 import com.google.gson.JsonObject
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.paymentsheet.PaymentSheetResult
 import kotlinx.android.synthetic.main.activity_checkout.*
 import okhttp3.*
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.HTTP
-import java.io.IOException
 import java.net.HttpURLConnection.HTTP_OK
 
+//Activité permettant le bon deroulement du paiement par Stripe
 class CheckoutActivity : AppCompatActivity() {
 
     private lateinit var apiService: APIService
@@ -43,6 +40,7 @@ class CheckoutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
 
+        //Recuperation de la clé Stripe
         PaymentConfiguration.init(
             applicationContext,
             "pk_test_51LDUVDIvLK6IY2HZ02Al4kK8CiWBwcfR3tDgl2aGbNJtLW4klNiRcWdWBHOz5zsUFAKgi41mbeu2JpbqZHV6kwQZ00vPP4XerN"
@@ -57,7 +55,7 @@ class CheckoutActivity : AppCompatActivity() {
         fetchPaymentIntent()
     }
 
-    private fun fetchPaymentIntent() {
+    private fun fetchPaymentIntent() { //fonction permettant de crée l'instance de paiement (savoir si l'utilisateur est connecter et qu'il a bien des objet dans son panier)
         apiService = this.let { APIConfig.getRetrofitClient(it).create(APIService::class.java) }!!
         val token = AuthManagement.getToken(this)
         val jwt = token?.let { JWT(it) }
@@ -93,6 +91,7 @@ class CheckoutActivity : AppCompatActivity() {
     }
 
     private fun onPaymentSheetResult(paymentResult: PaymentSheetResult) {
+        //fin de transaction appel a l'Api pour savoir si l'utilisateur a bien validé la commande et lui faire un retour si ce n'est pas le cas
         when (paymentResult) {
             is PaymentSheetResult.Completed -> {
                 apiService =
@@ -108,9 +107,10 @@ class CheckoutActivity : AppCompatActivity() {
                         call: Call<ResponseBody>,
                         response: Response<ResponseBody>
                     ) {
-                        if (response.code() == HTTP_OK) {
+                        if (response.code() == HTTP_OK) { //reception d'une reponse 200, l'achat a bien été validé
                             Toast.makeText(applicationContext, "Achat Validé, Votre Panier a été Vidé", Toast.LENGTH_SHORT).show()
                             finish()
+
                         }
                     }
 
@@ -119,10 +119,10 @@ class CheckoutActivity : AppCompatActivity() {
                     }
                 })
             }
-            is PaymentSheetResult.Canceled -> {
+            is PaymentSheetResult.Canceled -> {//si l'utilisateur est revenu en arrière et na pas valider ca commande
                 Toast.makeText(applicationContext, "Achat annuler", Toast.LENGTH_SHORT).show()
             }
-            is PaymentSheetResult.Failed -> {
+            is PaymentSheetResult.Failed -> {//si l'utilisateur na pas asser de fond pour valider ca commande
                 Toast.makeText(applicationContext, "Echec", Toast.LENGTH_SHORT).show()
             }
         }

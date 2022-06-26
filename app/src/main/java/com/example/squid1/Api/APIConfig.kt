@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import com.google.gson.GsonBuilder
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
-
+//Fichier de Configuration pour les requêtes HTTP
 object APIConfig {
 
     val BASE_URL = "https://test-bash-squid.herokuapp.com/"

@@ -3,8 +3,7 @@ package com.example.squid1.Api
 //import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-var listProductFavourite = mutableListOf<Product>()
-
+//Liste des valeurs envoyer par l'Api
 data class Product(
     @SerializedName("category")
     val category: Category,

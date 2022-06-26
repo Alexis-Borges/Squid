@@ -21,7 +21,7 @@ import retrofit2.Response
 class ResultSearchActivity : AppCompatActivity() {
 
     // This property is only valid between onCreateView and onDestroyView.
-    var listValue = listOf<Product>()
+    var product = listOf<Product>()
     private lateinit var binding: ActivityResultSearchBinding
     private lateinit var apiService: APIService
     private lateinit var productAdapter: ProductAdapter
@@ -40,13 +40,13 @@ class ResultSearchActivity : AppCompatActivity() {
             getlistProductSortByCategory(category)
 
             Log.d("listProductSortByCategory", category.toString())
-            Log.d("listValue", listValue.toString())
+            Log.d("listValue", product.toString())
 
-//            binding.recyclerViewSearchResult.apply {
-//                layoutManager =
-//                    GridLayoutManager(applicationContext, 2)
-//                adapter = ProductAdapter(applicationContext, listValue)
-//            }
+            binding.recyclerViewSearchResult.apply {
+                layoutManager =
+                    GridLayoutManager(applicationContext, 2)
+                adapter = ProductAdapter(applicationContext,this@ResultSearchActivity, product)
+            }
 
         }
     }
@@ -54,9 +54,9 @@ class ResultSearchActivity : AppCompatActivity() {
     private fun getlistProductSortByCategory(categoryId: Int) {
 
 
-//        apiService = applicationContext?.let {
-//            APIConfig.getRetrofitClient(it).create(APIService::class.java)
-//        }!!
+        apiService = applicationContext?.let {
+            APIConfig.getRetrofitClient(it).create(APIService::class.java)
+        }!!
 
 
         apiService.getProductsByCategory(categoryId).enqueue(object : retrofit2.Callback<List<Product>> {
@@ -71,11 +71,11 @@ class ResultSearchActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                 Log.d("Data response",response.body().toString() )
 
-//                listValue = response.body()!!
-//
-//                productAdapter = ProductAdapter(applicationContext, listValue)
-//
-//                productAdapter.notifyDataSetChanged()
+                product = response.body()!!
+
+                productAdapter = ProductAdapter(applicationContext, this@ResultSearchActivity, product)
+
+                productAdapter.notifyDataSetChanged()
 
             }
 
