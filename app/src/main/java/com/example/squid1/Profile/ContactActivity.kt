@@ -25,7 +25,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class ContactActivity : AppCompatActivity() {
+class ContactActivity : AppCompatActivity() { //Activité Formulaire de contact
     private lateinit var apiService: APIService
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -40,7 +40,7 @@ class ContactActivity : AppCompatActivity() {
 
         val firstName = findViewById<EditText>(R.id.editTextTextPersonName).text.toString()
         val lastName = findViewById<EditText>(R.id.editTextTextPersonName2).text.toString()
-        val email = findViewById<EditText>(R.id.editTextTextEmailAddress).text.toString()
+        val email = findViewById<EditText>(R.id.editTextTextEmailAddress).text.toString()  //Récupération des informations rentraient dans les champs
         val subject = findViewById<EditText>(R.id.editTextTextPersonName3).text.toString()
         val message = findViewById<EditText>(R.id.editTextTextMultiLine).text.toString()
 
@@ -49,7 +49,7 @@ class ContactActivity : AppCompatActivity() {
                 APIConfig.getRetrofitClient(applicationContext.applicationContext)
                     .create(APIService::class.java)
             apiService.contactinfo(
-                UserContact(firstName, lastName, email, subject, message))
+                    UserContact(firstName, lastName, email, subject, message)) //envoie à l'api du formulaire avec ces informations
                 .enqueue(object :
                     Callback<ResponseBody> {
                     @SuppressLint("RestrictedApi")

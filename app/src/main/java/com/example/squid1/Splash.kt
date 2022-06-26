@@ -7,7 +7,7 @@ import com.example.squid.R
 import com.example.squid1.Login.LoginActivity
 import kotlinx.android.synthetic.main.splash.*
 
-class Splash : AppCompatActivity() {
+class Splash : AppCompatActivity() { //Écran de chargement lors de l'exécution de l'application
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)

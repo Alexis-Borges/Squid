@@ -2,7 +2,7 @@ package com.example.squid1.Login;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
+//Un Client Http pour gerer l'inscription, connexion
 public class RetrofitClient {
     private static  final String BASE_URL = "https://test-bash-squid.herokuapp.com/";
     private static RetrofitClient mInstance;

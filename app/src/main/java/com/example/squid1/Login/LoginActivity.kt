@@ -20,7 +20,7 @@ import retrofit2.Response
 import java.net.HttpURLConnection.HTTP_OK
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() { //Activiter de connexion
      lateinit var etUsername: EditText
     lateinit var etPassword: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.btnLogin).setOnClickListener {
 
-            if (Utilities.isValidMail(etUsername.text.toString())) {
+            if (Utilities.isValidMail(etUsername.text.toString())) { //Verification du champs qui doit etre composer d'un @ et d'un .com
                 loginUser()
             } else {
                 Toast.makeText(
@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
-        findViewById<View>(R.id.tvRegisterLink).setOnClickListener {
+        findViewById<View>(R.id.tvRegisterLink).setOnClickListener { //Permet le changement de page si l'utilisateur na pas de compte et souhaite en crée un
             startActivity(
                 Intent(
                     this@LoginActivity,
@@ -55,8 +55,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser() {
-        val userName = etUsername!!.text.toString().trim { it <= ' ' }
-        val password = etPassword!!.text.toString().trim { it <= ' ' }
+        val userName = etUsername!!.text.toString().trim { it <= ' ' } //Vérification que le champ ne soit pas vide
+        val password = etPassword!!.text.toString().trim { it <= ' ' } //Vérification que le champ ne soit pas vide
         if (userName.isEmpty()) {
             etUsername!!.error = "Email is required"
             etUsername!!.requestFocus()
@@ -77,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<ResponseBody?>
                 ) {
 
-                    if (response.code() == HTTP_OK) {
+                    if (response.code() == HTTP_OK) {   //si l'utilisateur existe il est connecter et un token lui est assigné
                         response.body()
                             ?.let { AuthManagement.saveToken(it.string(), this@LoginActivity) }
 

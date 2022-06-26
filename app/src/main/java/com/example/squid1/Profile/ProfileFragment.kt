@@ -36,25 +36,25 @@ class ProfileFragment : Fragment() {
         val userEmail = jwt?.getClaim("email")?.asString()
         val UserAdmin = jwt?.getClaim("isAdmin")?.asString()
 
-        var infoUser =  view.findViewById<Button>(R.id.infoUser)
+        var infoUser =  view.findViewById<Button>(R.id.infoUser) //Redirection vers la page information utilisateur
         infoUser.setOnClickListener {
             val intent = Intent(activity, infoUserActivity::class.java)
             startActivityForResult(intent, 1)
         }
-
+            //TODO afficher les commandes passées
 //        var commande = view.findViewById<Button>(R.id.commande)
 //        commande.setOnClickListener {
 //            val intent = Intent(this, ::class.java)
 //            startActivityForResult(intent, 1)
 //        }
 //
-        var contact = view.findViewById<Button>(R.id.contacts)
+        var contact = view.findViewById<Button>(R.id.contacts) //Redirection vers la page formulaire de contact
         contact.setOnClickListener {
             val intent = Intent(activity, ContactActivity::class.java)
             startActivityForResult(intent, 1)
         }
 
-        var logout = view.findViewById<Button>(R.id.logout)
+        var logout = view.findViewById<Button>(R.id.logout) //permet la deconnexion et la supression du token d'authentification
         logout.setOnClickListener {
             activity?.let { AuthManagement.disconnect(it) }
             restartApp()
@@ -63,7 +63,7 @@ class ProfileFragment : Fragment() {
        return view
     }
 
-    private fun restartApp() {
+    private fun restartApp() { //Redémarrage de l'application lors de la déconnexion
         val i = requireActivity().baseContext.packageManager
             .getLaunchIntentForPackage(requireActivity().baseContext.packageName)
         i!!.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

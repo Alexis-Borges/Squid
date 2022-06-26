@@ -31,11 +31,12 @@ import retrofit2.Response
 
 
 class FavFragment : Fragment() {
-
+    //fragment qui va gerer l'affichage de la page favoris
     private lateinit var apiService: APIService
     private var _binding: FragmentCartBinding? = null
     private val binding get() = _binding!!
     lateinit var favView: RecyclerView
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,7 +45,7 @@ class FavFragment : Fragment() {
     ): View? {
 
         _binding = FragmentCartBinding.inflate(inflater, container, false)
-        var view = inflater.inflate(R.layout.fragment_fav, container, false)
+        var view = inflater.inflate(R.layout.fragment_fav, container, false) //injection de la view
 
         favView = view.findViewById(R.id.fav_recyclerView) as RecyclerView
         primaryFunction()
@@ -69,11 +70,11 @@ class FavFragment : Fragment() {
     }
 
     private lateinit var productAdapter: ProductAdapter
-    private var favitem = listOf<FavItem>()
+    private var favitem = listOf<FavItem>() //recuperation de la list favoris
 
     private fun getUserfav() {
 
-        favView.layoutManager =
+        favView.layoutManager = //agencement par deux produit par ligne comme dans le fragment acceuil
             StaggeredGridLayoutManager(
                 2,
                 StaggeredGridLayoutManager.VERTICAL
@@ -87,7 +88,7 @@ class FavFragment : Fragment() {
 
         var userId = jwt?.getClaim("id")?.asString().toString()
 
-        apiService.getUserFav(userId, jwt.toString()).enqueue(object : Callback<List<FavItem>> {
+        apiService.getUserFav(userId, jwt.toString()).enqueue(object : Callback<List<FavItem>> { //recupereration par l'api des favoris de l'utilisateur
             override fun onFailure(call: Call<List<FavItem>>, t: Throwable) {
 
                 print(t.message)
@@ -96,7 +97,7 @@ class FavFragment : Fragment() {
 
             }
 
-            override fun onResponse(call: Call<List<FavItem>>, response: Response<List<FavItem>>) {
+            override fun onResponse(call: Call<List<FavItem>>, response: Response<List<FavItem>>) { //affichage de la liste des produits present dans les favoris
 
                 favitem = response.body()!!
                 val products = favitem.map { favItem -> favItem.article }
@@ -111,7 +112,9 @@ class FavFragment : Fragment() {
 
         })
 
+
     }
+
 
 }
 

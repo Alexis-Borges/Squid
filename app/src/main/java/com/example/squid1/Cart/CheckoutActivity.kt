@@ -1,6 +1,7 @@
 package com.example.squid1.Cart
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -15,6 +16,7 @@ import com.example.squid.R
 import com.example.squid1.Api.APIConfig
 import com.example.squid1.Api.APIService
 import com.example.squid1.Login.AuthManagement
+import com.example.squid1.MainActivity
 import com.example.squid1.fragments.HomeFragment
 import com.google.gson.JsonObject
 import com.stripe.android.PaymentConfiguration
@@ -110,6 +112,8 @@ class CheckoutActivity : AppCompatActivity() {
                         if (response.code() == HTTP_OK) { //reception d'une reponse 200, l'achat a bien été validé
                             Toast.makeText(applicationContext, "Achat Validé, Votre Panier a été Vidé", Toast.LENGTH_SHORT).show()
                             finish()
+                            startActivity(Intent(applicationContext, MainActivity::class.java));
+
 
                         }
                     }

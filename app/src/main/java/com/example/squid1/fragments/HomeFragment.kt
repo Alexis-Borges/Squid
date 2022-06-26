@@ -19,7 +19,7 @@ import retrofit2.Call
 import retrofit2.Response
 
 class HomeFragment : Fragment() {
-
+    //fragment accueil ou l'utilisateur retrouvera les produits tendances
     private lateinit var apiService: APIService
     private lateinit var productAdapter: ProductAdapter
 
@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
 
     private fun getProducts() {
 
-        products_recyclerview.layoutManager =
+        products_recyclerview.layoutManager = //affichage deux produit par ligne
             StaggeredGridLayoutManager(
                 2,
                 StaggeredGridLayoutManager.VERTICAL
@@ -56,7 +56,7 @@ class HomeFragment : Fragment() {
         apiService = activity?.let { APIConfig.getRetrofitClient(it).create(APIService::class.java) }!!
 
 
-        apiService.getProducts().enqueue(object : retrofit2.Callback<List<Product>> {
+        apiService.getProducts().enqueue(object : retrofit2.Callback<List<Product>> { //recuperation des produits par l'api
             override fun onFailure(call: Call<List<Product>>, t: Throwable) {
 
                 print(t.message)
@@ -65,7 +65,7 @@ class HomeFragment : Fragment() {
 
             }
 
-            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
+            override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) { //affichage des produits recuperer de l'api
 
                 products = response.body()!!
 

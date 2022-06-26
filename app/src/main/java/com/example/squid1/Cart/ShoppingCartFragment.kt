@@ -78,7 +78,7 @@ class ShoppingCartFragment : Fragment() {
     }
 
     private lateinit var shoppingCartAdapter: ShoppingCartAdapter
-    private var cartitem = listOf<Cartitem>()
+    private var cartitem = listOf<Cartitem>() //affichage de la liste d'articles
 
     private fun getUserShoppingCart() {
 
@@ -93,7 +93,7 @@ class ShoppingCartFragment : Fragment() {
 
         var userId = jwt?.getClaim("id")?.asString().toString()
 
-        apiService.getUserProductFromShoppingCart(userId, jwt.toString()).enqueue(object : Callback<List<Cartitem>> {
+        apiService.getUserProductFromShoppingCart(userId, jwt.toString()).enqueue(object : Callback<List<Cartitem>> { //appel pour la recup des produits dans le panier de l'utilisateur
             override fun onFailure(call: Call<List<Cartitem>>, t: Throwable) {
 
                 print(t.message)
@@ -102,13 +102,13 @@ class ShoppingCartFragment : Fragment() {
 
             }
 
-            override fun onResponse(call: Call<List<Cartitem>>, response: Response<List<Cartitem>>) {
+            override fun onResponse(call: Call<List<Cartitem>>, response: Response<List<Cartitem>>) { //affichage de ceux-ci
 
                 cartitem = response.body()!!
 
                 var totalPrice = 0.0
                 for (cartitem in cartitem) {
-                    totalPrice += cartitem.article.price * cartitem.quantity
+                    totalPrice += cartitem.article.price * cartitem.quantity //permet de calculer le cout total du panier a partir des prix produits
 
                 }
                 totalCartPrice.text = totalPrice.toString() + "€"

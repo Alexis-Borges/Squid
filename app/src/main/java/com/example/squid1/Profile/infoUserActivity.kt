@@ -30,7 +30,7 @@ import java.net.HttpURLConnection.HTTP_OK
 
 
 class infoUserActivity : AppCompatActivity() {
-
+        //Affichage des informations de l'utilisateur
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_user)

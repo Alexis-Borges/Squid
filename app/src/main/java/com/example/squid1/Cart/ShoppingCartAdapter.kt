@@ -34,7 +34,7 @@ class ShoppingCartAdapter(var context: Context, var cartItems: List<Cartitem>, a
     private var shoppingCartFragment = shoppingCartFragment
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
 
-        val layout = LayoutInflater.from(context).inflate(R.layout.cart_list_item, parent, false) //recuperation de la page ou l'on souhaite injecter les informations
+        val layout = LayoutInflater.from(context).inflate(R.layout.cart_list_item, parent, false) //recuperation du design ou l'on souhaite injecter les informations
 
         return ViewHolder(layout, shoppingCartFragment)
     }
@@ -48,7 +48,7 @@ class ShoppingCartAdapter(var context: Context, var cartItems: List<Cartitem>, a
 
 
     class ViewHolder(view: View , val shoppingCartFragment: ShoppingCartFragment) : RecyclerView.ViewHolder(view) {
-    //Agencement des informations afficher a partir de l'api sur la page dynamique (recuperer l'url de l'image et l'injecter dans notre xml)
+    //Agencement des informations affiché a partir de l'api sur la page dynamique (recuperer l'url de l'image et l'injecter dans notre xml)
         fun bindItem(cartItem: Cartitem, activity: Activity) {
 
             Picasso.get().load(cartItem.article.images[0].url).fit().into(itemView.product_image)

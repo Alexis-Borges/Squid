@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class AuthManagement(context: Context?, dataStoreName: String) {
+class AuthManagement(context: Context?, dataStoreName: String) { //Gère le JWT ainsi que la lecture de celui-ci
 
     val name = dataStoreName
     var jwtToken = ""

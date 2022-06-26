@@ -13,15 +13,41 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eeb2280e-85fd-4a60-86da-23f8711ccec9" name="Default Changelist" comment="DONE">
+    <list default="true" id="eeb2280e-85fd-4a60-86da-23f8711ccec9" name="Default Changelist" comment="doned">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/APIService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/APIService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Articles.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Articles.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Cartitem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Cartitem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Category.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Category.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/FavItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/FavItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Image.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Image.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Product.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Api/Product.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Cart/CheckoutActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Cart/CheckoutActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Cart/ShoppingCartAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Cart/ShoppingCartAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Cart/ShoppingCartFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Cart/ShoppingCartFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Fav/FavFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Fav/FavFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/API.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/API.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/AuthManagement.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/AuthManagement.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/LoginActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/RegisterActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/RegisterActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/RetrofitClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/RetrofitClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Login/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/ProductAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/ProductAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Profile/ContactActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Profile/ContactActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Profile/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Profile/ProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Profile/infoUserActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Profile/infoUserActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Splash.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Splash.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/Utilitaires.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/Utilitaires.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/squid1/fragments/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/squid1/fragments/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_fav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_fav.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" show_ignored="true" />
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\alexi\.android\avd\Pixel_5_API_30_3.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -109,13 +135,14 @@
     <property name="android-custom-viewC:/Users/alexi/AppData/Local/Android/Sdk/sources/android-31/android/view/View.java_SELECTED" value="View" />
     <property name="android-custom-viewC:/Users/alexi/AppData/Local/Android/Sdk/sources/android-31/android/view/View.java_View_DIMENSIONS" value="1080&#10;1920" />
     <property name="android-custom-viewC:/Users/alexi/AppData/Local/Android/Sdk/sources/android-31/android/widget/EditText.java_SELECTED" value="EditText" />
+    <property name="android-custom-viewC:/Users/alexi/AppData/Local/Android/Sdk/sources/android-31/android/widget/ImageView.java_SELECTED" value="ImageView" />
     <property name="android-custom-viewC:/Users/alexi/AppData/Local/Android/Sdk/sources/android-31/android/widget/ProgressBar.java_ProgressBar_DIMENSIONS" value="1080&#10;1920" />
     <property name="android-custom-viewC:/Users/alexi/AppData/Local/Android/Sdk/sources/android-31/android/widget/ProgressBar.java_SELECTED" value="ProgressBar" />
     <property name="android-custom-viewC:/Users/alexi/AppData/Local/Android/Sdk/sources/android-31/android/widget/TextView.java_SELECTED" value="TextView" />
     <property name="android-custom-viewC:/Users/alexi/AppData/Local/Android/Sdk/sources/android-31/android/widget/TextView.java_TextView_DIMENSIONS" value="1080&#10;1920" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/example/squid1" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/res/layout" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -129,11 +156,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexi\StudioProjects\Squid test\app\src\main\res\layout" />
       <recent name="C:\Users\alexi\StudioProjects\Squid test\app\src\main\java\com\example\squid1\Login" />
       <recent name="C:\Users\alexi\StudioProjects\Squid test\app\src\main\java\com\example\squid1\Login-Signup" />
       <recent name="C:\Users\alexi\StudioProjects\Squid test\app\src\main\res\drawable" />
       <recent name="C:\Users\alexi\StudioProjects\Squid test\app\src\main\res\font" />
-      <recent name="C:\Users\alexi\StudioProjects\Squid test\app\src\main\res\values-w1240dp" />
     </key>
     <key name="android.template.-1174515044">
       <recent name="com.example.squid1.fragments" />
@@ -399,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656258547731</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="doned">
+      <created>1656258807254</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1656258807254</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -421,7 +455,8 @@
     <MESSAGE value="cartDone" />
     <MESSAGE value="Pay&amp;Fav Done" />
     <MESSAGE value="DONE" />
-    <option name="LAST_COMMIT_MESSAGE" value="DONE" />
+    <MESSAGE value="doned" />
+    <option name="LAST_COMMIT_MESSAGE" value="doned" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

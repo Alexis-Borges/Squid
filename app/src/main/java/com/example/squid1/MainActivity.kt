@@ -34,9 +34,9 @@ class MainActivity : AppCompatActivity() {
         val homeFragment = HomeFragment()
         val contactActivity = ContactActivity()
 
-       makeCurrentFragment(homeFragment)
+       makeCurrentFragment(homeFragment) //Premier écran affiché après la connexion
 
-        bottom_navigation.setOnItemSelectedListener {
+        bottom_navigation.setOnItemSelectedListener { //Permets la navigation entre les pages grace à la barre de navigation
             when (it.itemId) {
                 R.id.ic_home -> makeCurrentFragment(homeFragment)
                 R.id.ic_favorites -> makeCurrentFragment(favFragment)
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-        bottom_navigation.setOnItemReselectedListener {
+        bottom_navigation.setOnItemReselectedListener { //Permets la régénération des pages grace à la barre de navigation
             when (it.itemId) {
                 R.id.ic_home -> refreshCurrentFragment(homeFragment)
                 R.id.ic_favorites -> refreshCurrentFragment(favFragment)
@@ -58,13 +58,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun makeCurrentFragment(fragment: Fragment) =
+    private fun makeCurrentFragment(fragment: Fragment) = //adapte la taille de page pour ne pas dépasser sur la barre de navigation ou sur le harder
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fl_wrapper, fragment)
             commit()
         }
 
-    fun refreshCurrentFragment(fragment: Fragment) {
+    fun refreshCurrentFragment(fragment: Fragment) { //la Fonction qui permets la régénération des pages grace à la barre de navigation
         var currentFragment = supportFragmentManager.findFragmentById(fragment.id)!!
         supportFragmentManager.beginTransaction().detach(currentFragment).commit()
         supportFragmentManager.beginTransaction().attach(currentFragment).commit()

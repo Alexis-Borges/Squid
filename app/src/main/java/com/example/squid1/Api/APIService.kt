@@ -86,6 +86,14 @@ interface APIService {
         @Query("idArticle") id: Int,
         @Header("token") Authentication: String
     ): Call<ResponseBody>
+
+    @DELETE ("favorites")
+    fun delFromFavList(
+        @Query("idCustomer") userId: String,
+        @Query("idArticle") id: Int,
+        @Header("token") Authentication: String
+    ): Call<ResponseBody>
+
     //Fav
     //contact
     @POST("contact")
